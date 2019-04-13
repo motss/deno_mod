@@ -30,7 +30,7 @@ jobs:
             deno -v
       - run:
           name: Test
-          command: deno ./mod_test.ts
+          command: deno ./test.ts
 
 workflows:
   version: 2
