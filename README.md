@@ -21,8 +21,8 @@
 
 ## Pre-requisite
 
-- [deno][] >= 0.2.6
-- [deno_std][] >= 0.2.6
+- [deno][] >= 0.3.5
+- [deno_std][] >= 0.3.4
 
 ## Versioning
 

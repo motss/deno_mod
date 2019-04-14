@@ -23,7 +23,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { normalize } from "https://denopkg.com/motss/deno_mod@v0.2.6/normalize_diacritics/mod.ts";
+import { normalize } from "https://denopkg.com/motss/deno_mod@v0.3.5/normalize_diacritics/mod.ts";
 
 (async () => {
   const str = "söme stüff with áccènts";
@@ -65,7 +65,7 @@ This methods works the same as `normalize([input])` except that this is the sync
 
 <!-- Badges -->
 
-[version-badge]: https://flat.badgen.net/badge/version/v0.2.6/blue?icon=github
+[version-badge]: https://flat.badgen.net/badge/version/v0.3.5/blue?icon=github
 [mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
