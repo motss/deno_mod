@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: Install Deno
-          command: curl -fsSL https://deno.land/x/install/install.sh | sh -s v0.2.6
+          command: curl -fsSL https://deno.land/x/install/install.sh | sh -s v0.3.5
       - run:
           name: Add Deno To PATH
           command: |
@@ -31,6 +31,10 @@ jobs:
       - run:
           name: Test
           command: deno ./test.ts
+      - run:
+          name: Benchmark
+          when: on_success
+          command: deno ./bench.ts
 
 workflows:
   version: 2

@@ -3,7 +3,6 @@ import {
   assert,
   assertStrictEq,
   assertThrowsAsync,
-  runTests,
   test
 } from "../test.mod.ts";
 
@@ -125,6 +124,28 @@ const awno = [
   [1, 2]
 ];
 
+async function failsWhenDeeplyCloneNull() {
+  assertThrowsAsync(
+    async () => {
+      const nu = null;
+      await deepClone(nu);
+    },
+    TypeError,
+    `'target' is not defined`
+  );
+}
+
+async function failsWhenDeeplyCloneUndefined() {
+  assertThrowsAsync(
+    async () => {
+      const nu = void 0;
+      await deepClone(nu);
+    },
+    TypeError,
+    `'target' is not defined`
+  );
+}
+
 async function willDeeplyCloneNestedObject() {
   assert(equal(await deepClone(owno), owno));
 }
@@ -242,29 +263,10 @@ function willDeepCloneSyncWithAbsoluteFlag() {
   assert(equal(dc, towno));
 }
 
-async function failsWhenDeeplyCloneNull() {
-  assertThrowsAsync(
-    async () => {
-      const nu = null;
-      await deepClone(nu);
-    },
-    TypeError,
-    `'target' is not defined`
-  );
-}
-
-async function failsWhenDeeplyCloneUndefined() {
-  assertThrowsAsync(
-    async () => {
-      const nu = void 0;
-      await deepClone(nu);
-    },
-    TypeError,
-    `'target' is not defined`
-  );
-}
-
 [
+  failsWhenDeeplyCloneNull,
+  failsWhenDeeplyCloneUndefined,
+
   willDeeplyCloneNestedObject,
   willTrulyDeepCloneNestedObject,
 
@@ -285,8 +287,5 @@ async function failsWhenDeeplyCloneUndefined() {
   willDeepCloningWithAbsoluteFlagBeforeMutatingClonedObject,
 
   willDeepCloneSync,
-  willDeepCloneSyncWithAbsoluteFlag,
-
-  failsWhenDeeplyCloneNull,
-  failsWhenDeeplyCloneUndefined
+  willDeepCloneSyncWithAbsoluteFlag
 ].map(n => test(n));

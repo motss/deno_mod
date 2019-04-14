@@ -9,7 +9,7 @@
 [![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
-> Simple [Deno][] module to remove any accents/ diacritics found in a string.
+> Simple [deno][] module to remove any accents/ diacritics found in a string.
 
 ## Table of contents <!-- omit in toc -->
 
@@ -23,7 +23,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { normalize } from "https://denopkg.com/motss/deno_mod@v0.2.0/normalize_diacritics/mod.ts";
+import { normalize } from "https://denopkg.com/motss/deno_mod@v0.2.6/normalize_diacritics/mod.ts";
 
 (async () => {
   const str = "söme stüff with áccènts";
@@ -50,9 +50,11 @@ This methods works the same as `normalize([input])` except that this is the sync
 [MIT License](http://motss.mit-license.org/) © Rong Sen Ng
 
 <!-- References -->
-[Deno]: https://github.com/denoland/deno
+
+[deno]: https://github.com/denoland/deno
 
 <!-- MDN -->
+
 [map-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 [string-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [object-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
@@ -62,9 +64,11 @@ This methods works the same as `normalize([input])` except that this is the sync
 [promise-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
 <!-- Badges -->
-[version-badge]: https://flat.badgen.net/badge/version/v0.2.0/blue?icon=github
+
+[version-badge]: https://flat.badgen.net/badge/version/v0.2.6/blue?icon=github
 [mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
+
 [version-url]: https://github.com/motss/deno_mod/tree/master/normalize_diacritics
 [mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE

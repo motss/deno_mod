@@ -2,19 +2,13 @@ import {
   assertStrictEq,
   assertEquals,
   assertThrowsAsync,
-  runTests,
   test
 } from "../test.mod.ts";
 
 import { normalize } from "./mod.ts";
 import { replaceDiacritics } from "./helpers.ts";
 
-// void async function main() {
-//   const d = await normalize(null);
-//   console.log(d);
-// }();
-
-async function throwsWhenInvalidInput() {
+async function failsWhenInvalidInput() {
   await assertThrowsAsync(
     async () => (normalize as (s: null) => Promise<void>)(null),
     TypeError,
@@ -22,7 +16,7 @@ async function throwsWhenInvalidInput() {
   );
 }
 
-async function throwsWhenInputIsUndefined() {
+async function failsWhenInputIsUndefined() {
   await assertThrowsAsync(
     async () => (normalize as (s?: string | null) => Promise<void>)(),
     TypeError,
@@ -30,7 +24,7 @@ async function throwsWhenInputIsUndefined() {
   );
 }
 
-async function normalizesStrings() {
+async function willNormalizeStrings() {
   const strs = [
     "Åland Islands",
     "Saint Barthélemy",
@@ -50,7 +44,7 @@ async function normalizesStrings() {
   ]);
 }
 
-async function normalizesStringsWithoutUsingNativeFunction() {
+async function willNormalizeStringsWithoutUsingNativeFunction() {
   const cachedFn = String.prototype.normalize;
   String.prototype.normalize = null!;
 
@@ -63,7 +57,7 @@ async function normalizesStringsWithoutUsingNativeFunction() {
   }
 }
 
-async function returnsOriginalCharacterWhenNoMatchFound() {
+async function willReturnOriginalCharacterWhenNoMatchFound() {
   const cachedFilter = Array.prototype.filter;
   const cachedFn = String.prototype.normalize;
   Array.prototype.filter = () => [];
@@ -79,11 +73,11 @@ async function returnsOriginalCharacterWhenNoMatchFound() {
   }
 }
 
-async function normalizeSingleCharacter() {
+async function willNormalizeSingleCharacter() {
   assertStrictEq(await normalize("ô"), "o");
 }
 
-async function returnsEmptyStringUnTouched() {
+async function willReturnEmptyStringUnTouched() {
   assertStrictEq(await normalize(""), "");
 }
 
@@ -97,12 +91,12 @@ async function useCorrectStringNormalizeFunction() {
 }
 
 [
-  throwsWhenInvalidInput,
-  throwsWhenInputIsUndefined,
-  normalizesStrings,
-  normalizesStringsWithoutUsingNativeFunction,
-  returnsOriginalCharacterWhenNoMatchFound,
-  normalizeSingleCharacter,
-  returnsEmptyStringUnTouched,
-  useCorrectStringNormalizeFunction
+  failsWhenInvalidInput,
+  failsWhenInputIsUndefined,
+
+  willNormalizeSingleCharacter,
+  willNormalizeStrings,
+  willNormalizeStringsWithoutUsingNativeFunction,
+  willReturnEmptyStringUnTouched,
+  willReturnOriginalCharacterWhenNoMatchFound
 ].map(n => test(n));

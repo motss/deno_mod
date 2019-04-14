@@ -1,7 +1,7 @@
 <div align="center" style="text-align: center;">
   <h1 style="border-bottom: none;">Deno Modules</h1>
 
-  <p>Modules for Deno</p>
+  <p>Modules for deno</p>
 </div>
 
 <hr />
@@ -10,7 +10,7 @@
 
 [![CircleCI][circleci-badge]][circleci-url]
 
-> A collection of [Deno][] modules written in TypeScript.
+> A collection of [deno][] modules written in TypeScript.
 
 ## Table of contents <!-- omit in toc -->
 
@@ -21,11 +21,12 @@
 
 ## Pre-requisite
 
-- [Deno][] >= 0.2.6
+- [deno][] >= 0.2.6
+- [deno_std][] >= 0.2.6
 
 ## Versioning
 
-All modules follows the versioning in [Deno][] releases. For example, the `v0.3.0` tag works for [Deno][] that tags between the range of `>=v0.3.0 <v0.4.0` but does not guarantee to work for any version out of the range, say `v0.2.6` or `v0.4.0`.
+All modules follows the versioning in [deno][] releases. For example, the `v0.3.0` tag works for [deno][] that tags between the range of `>=v0.3.0 <v0.4.0` but does not guarantee to work for any version out of the range, say `v0.2.6` or `v0.4.0`.
 
 See [denoland/deno_std#how-to-use][] for more details.
 
@@ -40,7 +41,8 @@ See [denoland/deno_std#how-to-use][] for more details.
 
 <!-- References -->
 
-[Deno]: https://github.com/denoland/deno
+[deno]: https://github.com/denoland/deno
+[deno_std]: https://github.com/denoland/deno_std
 [denoland/deno_std#how-to-use]: https://github.com/denoland/deno_std#how-to-use
 [deep_clone]: https://github.com/motss/deno_mod/tree/master/deep_clone
 [normalize_diacritics]: https://github.com/motss/deno_mod/tree/master/normalize_diacritics
