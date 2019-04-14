@@ -5,7 +5,7 @@
 version: 2.1
 
 defaults: &defaults
-  working_directory: ~/deep.clone
+  working_directory: ~/deno_mod
   docker:
     - image: circleci/python:2-node
 
