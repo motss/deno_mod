@@ -21,7 +21,7 @@
 
 ## Pre-requisite
 
-- [Deno][] >= 0.1.12
+- [Deno][] >= 0.2.6
 
 ## Versioning
 
