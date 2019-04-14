@@ -50,7 +50,7 @@ This methods works the same as `normalize([input])` except that this is the sync
 [MIT License](http://motss.mit-license.org/) © Rong Sen Ng
 
 <!-- References -->
-[deno-url]: https://github.com/denoland/deno
+[Deno]: https://github.com/denoland/deno
 
 <!-- MDN -->
 [map-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
