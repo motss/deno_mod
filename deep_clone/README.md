@@ -7,31 +7,23 @@
 <hr />
 
 [![Version][version-badge]][version-url]
-[![Deno Version][deno-version-badge]][deno-version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
-[![CircleCI][circleci-badge]][circleci-url]
-
-> Simple [deno][deno-url] module to do simple and fast deep cloning.
+> Simple [Deno][] module to do simple and fast deep cloning.
 
 ## Table of contents <!-- omit in toc -->
 
-- [Pre-requisite](#pre-requisite)
 - [Usage](#usage)
 - [API Reference](#api-reference)
   - [deepClone&lt;T&gt;(target[, options])](#deepclonelttgttarget-options)
   - [deepCloneSync(target[, options])](#deepclonesynctarget-options)
 - [License](#license)
 
-## Pre-requisite
-
-- [deno][deno-url] >= 0.2.6
-
 ## Usage
 
 ```ts
 /** Import from GH via `denopkg` */
-import { deepClone } from "https://denopkg.com/motss/deep-clone@v1.0.0-deno/mod.ts";
+import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.0.1/deep-clone/mod.ts";
 
 (async () => {
   const simpleObject = {
@@ -75,7 +67,7 @@ This methods works the same as `deepClone(target[, options])` except that this i
 
 <!-- References -->
 
-[deno-url]: https://github.com/denoland/deno
+[Deno]: https://github.com/denoland/deno
 
 <!-- MDN -->
 
@@ -92,14 +84,10 @@ This methods works the same as `deepClone(target[, options])` except that this i
 
 <!-- Badges -->
 
-[version-badge]: https://flat.badgen.net/badge/version/v1.0.0-deno/blue?icon=github
-[deno-version-badge]: https://flat.badgen.net/github/release/denoland/deno/stable?icon=github
-[mit-license-badge]: https://flat.badgen.net/npm/license/deep.clone
-[circleci-badge]: https://flat.badgen.net/circleci/github/motss/deep.clone/deno?icon=circleci
+[version-badge]: https://flat.badgen.net/badge/version/v0.0.1/blue?icon=github
+[mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
 
-[version-url]: https://github.com/motss/deep.clone/tree/deno
-[deno-version-url]: https://github.com/denoland/deno
-[mit-license-url]: https://github.com/motss/deep.clone/blob/deno/LICENSE
-[circleci-url]: https://circleci.com/gh/motss/deep.clone/tree/deno
+[version-url]: https://github.com/motss/deno_mod/tree/master/deep_clone
+[mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE
