@@ -19,7 +19,8 @@ bench({
         d: "deep",
         e: Math.random()
           .toString(16)
-          .slice(-7)
+          .slice(-7),
+        f: Symbol("haha")
       });
     }
     b.stop();
@@ -41,7 +42,8 @@ bench({
           e: { f: 111 },
           f: Math.random()
             .toString(16)
-            .slice(-7)
+            .slice(-7),
+          g: Symbol("haha")
         },
         { absolute: true }
       );
@@ -64,7 +66,8 @@ bench({
         d: "deep",
         e: Math.random()
           .toString(16)
-          .slice(-7)
+          .slice(-7),
+        f: Symbol("haha")
       });
     }
     b.stop();
@@ -86,7 +89,8 @@ bench({
           e: { f: 111 },
           f: Math.random()
             .toString(16)
-            .slice(-7)
+            .slice(-7),
+          g: Symbol("haha")
         },
         { absolute: true }
       );

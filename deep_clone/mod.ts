@@ -2,14 +2,14 @@ export interface DeepCloneOptions {
   absolute?: boolean;
 }
 
-import clonedeep from "https://unpkg.com/lodash-es@latest/cloneDeep.js";
+import { deepAssign } from "https://deno.land/x/std@v0.3.4/util/deep_assign.ts";
 
-export function deepCloneSync<T>(target: T, options?: DeepCloneOptions) {
+export function deepCloneSync<T>(target: T, options?: DeepCloneOptions): T {
   if (target == null) throw new TypeError(`'target' is not defined`);
 
-  return (options && options.absolute
-    ? clonedeep(target)
-    : JSON.parse(JSON.stringify(target))) as T;
+  return options && options.absolute
+    ? deepAssign({}, target as any)
+    : JSON.parse(JSON.stringify(target));
 }
 
 export async function deepClone<T>(target: T, options?: DeepCloneOptions) {

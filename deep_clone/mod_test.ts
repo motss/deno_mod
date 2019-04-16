@@ -47,7 +47,12 @@ const towno = {
               },
               {
                 v: null
-              }
+              },
+              Symbol(
+                Math.random()
+                  .toString(16)
+                  .slice(-7)
+              )
             ]
           },
           {
@@ -66,7 +71,8 @@ const towno = {
     ]
   },
   h: [1, 2],
-  i: "random-string-depth-0"
+  i: "random-string-depth-0",
+  j: Symbol("haha")
 };
 const owno = {
   a: {
