@@ -10,16 +10,16 @@ bench({
   name: `runs${runs}ForDeepCloneX${iter}s`,
   async func(b: BenchmarkTimer) {
     b.start();
-    for (let i = 0; i < runs; i += 1) {
+    for (let i = 0; i < iter; i += 1) {
       await deepClone({
         a: {
           b: { c: [1, 2, 3] },
           e: [{ f: null }]
         },
         d: "deep",
-        e: Math.random()
+        [Math.random()
           .toString(16)
-          .slice(-7),
+          .slice(-7)]: "e",
         f: Symbol("haha")
       });
     }
@@ -32,7 +32,7 @@ bench({
   name: `runs${runs}ForDeepCloneAbsoluteX${iter}s`,
   async func(b: BenchmarkTimer) {
     b.start();
-    for (let i = 0; i < 1e3; i += 1) {
+    for (let i = 0; i < iter; i += 1) {
       await deepClone(
         {
           a: () => {},
@@ -40,9 +40,9 @@ bench({
           c: [1, 2],
           d: new Date(),
           e: { f: 111 },
-          f: Math.random()
+          [Math.random()
             .toString(16)
-            .slice(-7),
+            .slice(-7)]: "f",
           g: Symbol("haha")
         },
         { absolute: true }
@@ -57,16 +57,16 @@ bench({
   name: `runs${runs}ForDeepCloneSyncX${iter}s`,
   func(b: BenchmarkTimer) {
     b.start();
-    for (let i = 0; i < runs; i += 1) {
+    for (let i = 0; i < iter; i += 1) {
       deepCloneSync({
         a: {
           b: { c: [1, 2, 3] },
           e: [{ f: null }]
         },
         d: "deep",
-        e: Math.random()
+        [Math.random()
           .toString(16)
-          .slice(-7),
+          .slice(-7)]: "e",
         f: Symbol("haha")
       });
     }
@@ -79,7 +79,7 @@ bench({
   name: `runs${runs}ForDeepCloneSyncAbsoluteX${iter}s`,
   func(b: BenchmarkTimer) {
     b.start();
-    for (let i = 0; i < 1e3; i += 1) {
+    for (let i = 0; i < iter; i += 1) {
       deepCloneSync(
         {
           a: () => {},
@@ -87,9 +87,9 @@ bench({
           c: [1, 2],
           d: new Date(),
           e: { f: 111 },
-          f: Math.random()
+          [Math.random()
             .toString(16)
-            .slice(-7),
+            .slice(-7)]: "f",
           g: Symbol("haha")
         },
         { absolute: true }
