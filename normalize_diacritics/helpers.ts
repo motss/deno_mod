@@ -243,22 +243,7 @@ export const diacritics: Diacritics[] = [
 ];
 // tslint:enable:max-line-length
 
-function nativeStringNormalize(s: string) {
-  /**
-   * NOTE: Normalizing accents/ diacritics in ES6.
-   * See https://bit.ly/2Cncgor for more info.
-   */
-  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-function stringNormalize(s: string) {
-  const normalized = diacritics.filter(n => n.diacritics.test(s));
-  return !normalized.length ? s : normalized[0].letter;
-}
-
-export function replaceDiacritics() {
-  return "function" === typeof "".normalize &&
-    "aeo" === nativeStringNormalize("áèö")
-    ? (s: string) => nativeStringNormalize(s)
-    : (s: string) => stringNormalize(s);
+export function removeDiacritics(s: string) {
+  const normalized = diacritics.find(n => n.diacritics.test(s));
+  return null == normalized ? s : normalized.letter;
 }
