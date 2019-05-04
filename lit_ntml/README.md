@@ -13,8 +13,8 @@
 ## Table of contents <!-- omit in toc -->
 
 - [Usage](#usage)
-    - [html()](#html)
-    - [htmlFragment()](#htmlfragment)
+  - [html()](#html)
+  - [htmlFragment()](#htmlfragment)
 - [API Reference](#api-reference)
   - [html()](#html-1)
   - [htmlFragment()](#htmlfragment-1)
@@ -25,12 +25,13 @@
 #### html()
 
 ```ts
-import { html } from 'https://denopkg.com/motss/deno_mod@v0.4.0/lit_ntml/mod.ts';
+import { html } from "https://denopkg.com/motss/deno_mod@v0.4.0/lit_ntml/mod.ts";
 
-const peopleList = ['Cash Black', 'Vict Fisherman'];
+const peopleList = ["Cash Black", "Vict Fisherman"];
 const syncTask = () => `<h1>Hello, World!</h1>`;
-const asyncLiteral = Promise.resolve('<h2>John Doe</h2>');
-const asyncListTask = async () => `<ul>${peopleList.map(n => `<li>${n}</li>`)}</ul>`;
+const asyncLiteral = Promise.resolve("<h2>John Doe</h2>");
+const asyncListTask = async () =>
+  `<ul>${peopleList.map(n => `<li>${n}</li>`)}</ul>`;
 
 /** Assuming top-level await is enabled... */
 await html`${syncTask}${asyncLiteral}${asyncListTask}`; /** <!DOCTYPE html><html><head></head><body><h1>Hello, World!</h1><h2>John Doe</h2><ul><li>Cash Black</li><li>Vict Fisherman</li></ul></body></html> */
@@ -39,7 +40,7 @@ await html`${syncTask}${asyncLiteral}${asyncListTask}`; /** <!DOCTYPE html><html
 #### htmlFragment()
 
 ```ts
-import { htmlFragment as html } from 'https://denopkg.com/motss/deno_mod@v0.4.0/lit_ntml/mod.ts';
+import { htmlFragment as html } from "https://denopkg.com/motss/deno_mod@v0.4.0/lit_ntml/mod.ts";
 
 const syncTask = () => `<h1>Hello, World!</h1>`;
 const externalStyleLiteral = `<style>body { margin: 0; padding: 0; box-sizing: border-box; }</style>`;
