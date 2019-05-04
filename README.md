@@ -15,7 +15,6 @@
 ## Table of contents <!-- omit in toc -->
 
 - [Pre-requisite](#pre-requisite)
-- [Versioning](#versioning)
 - [Available modules](#available-modules)
 - [License](#license)
 
@@ -23,12 +22,6 @@
 
 - [deno][] >= 0.3.5
 - [deno_std][] >= 0.3.4
-
-## Versioning
-
-All modules follows the versioning in [deno][] releases. For example, the `v0.3.0` tag works for [deno][] that tags between the range of `>=v0.3.0 <v0.4.0` but does not guarantee to work for any version out of the range, say `v0.2.6` or `v0.4.0`.
-
-See [denoland/deno_std#how-to-use][] for more details.
 
 ## Available modules
 
