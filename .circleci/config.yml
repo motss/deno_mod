@@ -30,7 +30,7 @@ jobs:
             deno -v
       - run:
           name: Test
-          command: deno ./test.ts
+          command: deno -r ./test.ts
       - run:
           name: Benchmark
           when: on_success
@@ -53,14 +53,14 @@ jobs:
           name: Versions
           command: |
             pwd
-            deno -v
+            deno version
       - run:
           name: Test
-          command: deno ./test.ts
+          command: deno -r run ./test.ts
       - run:
           name: Benchmark
           when: on_success
-          command: deno ./bench.ts
+          command: deno run ./bench.ts
 
 workflows:
   version: 2
