@@ -26,6 +26,7 @@
 ## Available modules
 
 - [deep_clone][] - Simple and fast deep cloning
+- [lit_ntml][] - Expressive HTML Templates
 - [normalize_diacritics][] - Remove accents/ diacritics in string
 
 ## License
@@ -36,16 +37,18 @@
 
 [deno]: https://github.com/denoland/deno
 [deno_std]: https://github.com/denoland/deno_std
-[denoland/deno_std#how-to-use]: https://github.com/denoland/deno_std#how-to-use
-[deep_clone]: https://github.com/motss/deno_mod/tree/master/deep_clone
-[normalize_diacritics]: https://github.com/motss/deno_mod/tree/master/normalize_diacritics
+
+<!-- Modules -->
+[deep_clone]: /deep_clone
+[lit_ntml]: /lit_ntml
+[normalize_diacritics]: /normalize_diacritics
 
 <!-- Badges -->
 
-[mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
+[mit-license-badge]: https://flat.badgen.net/github/license/motss/deno_mod
 [circleci-badge]: https://flat.badgen.net/circleci/github/motss/deno_mod/master?icon=circleci
 
 <!-- Links -->
 
-[mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE
+[mit-license-url]: /LICENSE
 [circleci-url]: https://circleci.com/gh/motss/deno_mod/tree/master
