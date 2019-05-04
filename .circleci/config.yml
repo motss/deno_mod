@@ -10,7 +10,7 @@ defaults: &defaults
     - image: circleci/python:2-node
 
 jobs:
-  test:
+  deno_v0_3_5:
     <<: *defaults
     steps:
       - checkout
@@ -36,8 +36,35 @@ jobs:
           when: on_success
           command: deno ./bench.ts
 
+  deno_latest:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install Deno
+          command: curl -fsSL https://deno.land/x/install/install.sh | sh
+      - run:
+          name: Add Deno To PATH
+          command: |
+            echo $BASH_ENV
+            echo 'export PATH="$HOME/.deno/bin:$PATH"' >> $BASH_ENV
+            source $BASH_ENV
+      - run:
+          name: Versions
+          command: |
+            pwd
+            deno -v
+      - run:
+          name: Test
+          command: deno ./test.ts
+      - run:
+          name: Benchmark
+          when: on_success
+          command: deno ./bench.ts
+
 workflows:
   version: 2
   deno-test:
     jobs:
-      - test
+      - deno_v0_3_5
+      - deno_latest
