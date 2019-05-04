@@ -6,7 +6,6 @@
 
 <hr />
 
-[![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
 > Simple [deno][] module to remove any accents/ diacritics found in a string.
@@ -23,7 +22,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { normalize } from "https://denopkg.com/motss/deno_mod@v0.3.5/normalize_diacritics/mod.ts";
+import { normalize } from "https://denopkg.com/motss/deno_mod@v0.4.0/normalize_diacritics/mod.ts";
 
 (async () => {
   const str = "söme stüff with áccènts";
@@ -65,10 +64,8 @@ This methods works the same as `normalize([input])` except that this is the sync
 
 <!-- Badges -->
 
-[version-badge]: https://flat.badgen.net/badge/version/v0.3.5/blue?icon=github
 [mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
 
-[version-url]: https://github.com/motss/deno_mod/tree/master/normalize_diacritics
 [mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE

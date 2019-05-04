@@ -6,7 +6,6 @@
 
 <hr />
 
-[![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
 > Simple [deno][] module to do simple and fast deep cloning.
@@ -23,7 +22,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.3.5/deep_clone/mod.ts";
+import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.4.0/deep_clone/mod.ts";
 
 (async () => {
   const simpleObject = {
@@ -84,10 +83,8 @@ This methods works the same as `deepClone(target[, options])` except that this i
 
 <!-- Badges -->
 
-[version-badge]: https://flat.badgen.net/badge/version/v0.3.5/blue?icon=github
 [mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
 
-[version-url]: https://github.com/motss/deno_mod/tree/master/deep_clone
 [mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE

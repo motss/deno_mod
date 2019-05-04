@@ -6,7 +6,6 @@
 
 <hr />
 
-[![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
 > Lightweight, expressive, and modern templating for SSR in [deno][], inspired by [lit-html][].
@@ -26,7 +25,7 @@
 #### html()
 
 ```ts
-import { html } from 'https://denopkg.com/motss/deno_mod@v0.3.6/lit_ntml/mod.ts';
+import { html } from 'https://denopkg.com/motss/deno_mod@v0.4.0/lit_ntml/mod.ts';
 
 const peopleList = ['Cash Black', 'Vict Fisherman'];
 const syncTask = () => `<h1>Hello, World!</h1>`;
@@ -40,7 +39,7 @@ await html`${syncTask}${asyncLiteral}${asyncListTask}`; /** <!DOCTYPE html><html
 #### htmlFragment()
 
 ```ts
-import { htmlFragment as html } from 'https://denopkg.com/motss/deno_mod@v0.3.6/lit_ntml/mod.ts';
+import { htmlFragment as html } from 'https://denopkg.com/motss/deno_mod@v0.4.0/lit_ntml/mod.ts';
 
 const syncTask = () => `<h1>Hello, World!</h1>`;
 const externalStyleLiteral = `<style>body { margin: 0; padding: 0; box-sizing: border-box; }</style>`;
@@ -83,10 +82,8 @@ await html`${externalStyleLiteral}${syncTask}`; /** <style>body { margin: 0; pad
 
 <!-- Badges -->
 
-[version-badge]: https://flat.badgen.net/badge/version/v0.3.5/blue?icon=github
 [mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
 
-[version-url]: https://github.com/motss/deno_mod/tree/master/lit_ntml
 [mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE

@@ -6,6 +6,7 @@
 
 <hr />
 
+[![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
 [![CircleCI][circleci-badge]][circleci-url]
@@ -45,10 +46,12 @@
 
 <!-- Badges -->
 
+[version-badge]: https://flat.badgen.net/github/release/motss/deno_mod?icon=github
 [mit-license-badge]: https://flat.badgen.net/github/license/motss/deno_mod
 [circleci-badge]: https://flat.badgen.net/circleci/github/motss/deno_mod/master?icon=circleci
 
 <!-- Links -->
 
+[version-url]: https://github.com/motss/deno_mod/releases
 [mit-license-url]: /LICENSE
 [circleci-url]: https://circleci.com/gh/motss/deno_mod/tree/master
