@@ -8,7 +8,7 @@
 
 [![MIT License][mit-license-badge]][mit-license-url]
 
-> Simple [deno][] module to do simple and fast deep cloning.
+> Simple [deno] module to do simple and fast deep cloning.
 
 ## Table of contents <!-- omit in toc -->
 

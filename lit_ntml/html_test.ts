@@ -1,4 +1,4 @@
-import { assertStrictEq, assertThrowsAsync, test } from "../test.mod.ts";
+import { assertStrictEq, assertThrowsAsync, prepareTest } from "../test.mod.ts";
 
 import { html } from "./mod.ts";
 
@@ -75,7 +75,7 @@ async function willRenderAListofSyncTasks() {
   );
 }
 
-[
+prepareTest([
   failsWhenErrorHappens,
 
   willRender,
@@ -83,4 +83,4 @@ async function willRenderAListofSyncTasks() {
   willRenderWithAsyncTasks,
   willRenderWithSyncAndAsyncTasks,
   willRenderWithSyncTasks
-].map(n => test(n));
+], "lit_ntml", "html");

@@ -8,7 +8,7 @@
 
 [![MIT License][mit-license-badge]][mit-license-url]
 
-> Lightweight, expressive, and modern templating for SSR in [deno][], inspired by [lit-html][].
+> Lightweight, expressive, and modern templating for SSR in [deno], inspired by [lit-html].
 
 ## Table of contents <!-- omit in toc -->
 

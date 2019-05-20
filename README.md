@@ -11,7 +11,7 @@
 
 [![CircleCI][circleci-badge]][circleci-url]
 
-> A collection of [deno][] modules written in TypeScript.
+> A collection of [deno] modules written in TypeScript.
 
 ## Table of contents <!-- omit in toc -->
 
@@ -21,14 +21,15 @@
 
 ## Pre-requisite
 
-- [deno][] >= 0.3.5
-- [deno_std][] >= 0.3.4
+- [deno] >= 0.3.5
+- [deno_std] >= 0.3.4
 
 ## Available modules
 
-- [deep_clone][] - Simple and fast deep cloning
-- [lit_ntml][] - Expressive HTML Templates
-- [normalize_diacritics][] - Remove accents/ diacritics in string
+- [deep_clone] - Simple and fast deep cloning
+- [lit_ntml] - Expressive HTML Templates
+- [normalize_diacritics] - Remove accents/ diacritics in string
+- [polling_observer] - A new way of running polling function with observer pattern
 
 ## License
 
@@ -43,6 +44,7 @@
 [deep_clone]: /deep_clone
 [lit_ntml]: /lit_ntml
 [normalize_diacritics]: /normalize_diacritics
+[polling_observer]: /polling_observer
 
 <!-- Badges -->
 

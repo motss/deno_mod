@@ -2,7 +2,7 @@ import {
   assertStrictEq,
   assertEquals,
   assertThrowsAsync,
-  test
+  prepareTest,
 } from "../test.mod.ts";
 
 import { normalize } from "./mod.ts";
@@ -73,7 +73,7 @@ async function willNormalizeNonAccentedCharacter() {
   assertStrictEq(await normalize("\u00d8"), "O");
 }
 
-[
+prepareTest([
   failsWhenInvalidInput,
   failsWhenInputIsUndefined,
 
@@ -83,4 +83,4 @@ async function willNormalizeNonAccentedCharacter() {
   willNormalizeAccentedCharactersWithoutUsingNativeFunction,
   willReturnOriginalCharacterWhenNoMatchFound,
   willNormalizeNonAccentedCharacter
-].map(n => test(n));
+], "normalize_diacritics");

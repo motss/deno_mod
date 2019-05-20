@@ -56,15 +56,15 @@ jobs:
             deno version
       - run:
           name: Test
-          command: deno -r run ./test.ts
+          command: sh ./run_test.sh
       - run:
           name: Benchmark
           when: on_success
-          command: deno run ./bench.ts
+          command: sh ./run_bench.sh
 
 workflows:
   version: 2
-  deno-test:
+  multi-build-n-test:
     jobs:
       - deno_v0_3_5
       - deno_latest

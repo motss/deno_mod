@@ -3,7 +3,7 @@ import {
   assert,
   assertStrictEq,
   assertThrowsAsync,
-  test
+  prepareTest,
 } from "../test.mod.ts";
 
 import { deepClone, deepCloneSync } from "./mod.ts";
@@ -269,7 +269,7 @@ function willDeepCloneSyncWithAbsoluteFlag() {
   assert(equal(dc, towno));
 }
 
-[
+prepareTest([
   failsWhenDeeplyCloneNull,
   failsWhenDeeplyCloneUndefined,
 
@@ -294,4 +294,4 @@ function willDeepCloneSyncWithAbsoluteFlag() {
 
   willDeepCloneSync,
   willDeepCloneSyncWithAbsoluteFlag
-].map(n => test(n));
+], "deep_clone");

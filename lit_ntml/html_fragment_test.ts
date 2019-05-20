@@ -1,4 +1,4 @@
-import { assertStrictEq, assertThrowsAsync, test } from "../test.mod.ts";
+import { assertStrictEq, assertThrowsAsync, prepareTest } from "../test.mod.ts";
 
 import { htmlFragment } from "./mod.ts";
 
@@ -86,7 +86,7 @@ async function willRenderExternalStyle() {
   );
 }
 
-[
+prepareTest([
   failsWhenErrorHappens,
 
   willRender,
@@ -95,4 +95,4 @@ async function willRenderExternalStyle() {
   willRenderWithAsyncTasks,
   willRenderWithSyncAndAsyncTasks,
   willRenderWithSyncTasks
-].map(n => test(n));
+], "lit_ntml", "htmlFragment");
