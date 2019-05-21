@@ -6,7 +6,7 @@ import "./lit_ntml/mod_test.ts";
 import "./polling_observer/mod_test.ts";
 
 async function test() {
-  await runTests();
+  await runTests({ parallel: true });
 }
 
 test();
