@@ -10,13 +10,13 @@ defaults: &defaults
     - image: circleci/python:2-node
 
 jobs:
-  deno_v0_3_5:
+  deno_v0_3_6:
     <<: *defaults
     steps:
       - checkout
       - run:
           name: Install Deno
-          command: curl -fsSL https://deno.land/x/install/install.sh | sh -s v0.3.5
+          command: curl -fsSL https://deno.land/x/install/install.sh | sh -s v0.3.6
       - run:
           name: Add Deno To PATH
           command: |
@@ -66,5 +66,5 @@ workflows:
   version: 2
   multi-build-n-test:
     jobs:
-      - deno_v0_3_5
+      - deno_v0_3_6
       - deno_latest
