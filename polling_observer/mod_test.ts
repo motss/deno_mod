@@ -375,6 +375,34 @@ async function willPollWithoutOnfinishCallback() {
   assertEquals((await task).length > 1, true);
 }
 
+async function willFireFinishEvent() {
+  const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
+  const obs = new PollingObserver<MockData>(async () => false);
+  const task = new Promise<CustomEvent>((yay) => {
+    obs.addEventListener(
+      'finish',
+      // (ev: CustomEvent<[OnfinishFulfilled<MockData>, PollingMeasure[]]>) => yay(ev.detail)
+      (ev: CustomEvent) => yay(ev)
+    );
+  });
+
+  obs.observe(() => data, { interval: 2e3, timeout: 5e3 });
+
+  const {
+    detail: [
+      { status, value },
+      records,
+    ],
+    // [OnfinishFulfilled<MockData>, PollingMeasure[]]
+  } = await task;
+
+
+  assertStrictEq(status, "timeout");
+  assertEquals(value, { ...data });
+  assertStrictEq(records.length > 1, true);
+  assertStrictEq(obs.takeRecords().length > 1, true);
+}
+
 prepareTest([
   failsWhenConditionCallbackIsUndefined,
   failsWhenErrorOccurs,
@@ -393,4 +421,5 @@ prepareTest([
   willPollWithAsyncConditionCallback,
   willPollWithSyncCallback,
   willPollWithoutOnfinishCallback,
+  willFireFinishEvent,
 ], "polling_observer");

@@ -31,7 +31,7 @@ function isPromise<T>(r: T | Promise<T>): r is Promise<T> {
   return 'function' === typeof((r as Promise<T>).then);
 }
 
-export class PollingObserver<T> {
+export class PollingObserver<T> extends EventTarget {
   public onfinish?: OnfinishCallback<T>;
 
   private _forceStop: boolean = false;
@@ -39,6 +39,8 @@ export class PollingObserver<T> {
   private _isPolling: boolean = false;
 
   constructor(public conditionCallback: ConditionCallback<T>) {
+    super();
+
     if ('function' !== typeof(conditionCallback)) {
       throw new TypeError(`'conditionCallback' is not defined`);
     }
@@ -116,9 +118,14 @@ export class PollingObserver<T> {
       /** NOTE(motss): Reset flags */
       this._isPolling = this._forceStop = false;
 
-      if ('function' === typeof(onfinishCallback)) {
-        onfinishCallback(result, recordsSlice, this);
-      }
+      if ('function' === typeof(onfinishCallback)) onfinishCallback(result, recordsSlice, this);
+
+      this.dispatchEvent(new CustomEvent('finish', {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: [result, recordsSlice, this],
+      }))
     }
   }
 
