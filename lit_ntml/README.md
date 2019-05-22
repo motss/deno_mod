@@ -13,8 +13,8 @@
 ## Table of contents <!-- omit in toc -->
 
 - [Usage](#usage)
-  - [html()](#html)
-  - [htmlFragment()](#htmlfragment)
+    - [html()](#html)
+    - [htmlFragment()](#htmlfragment)
 - [API Reference](#api-reference)
   - [html()](#html-1)
   - [htmlFragment()](#htmlfragment-1)
@@ -25,7 +25,7 @@
 #### html()
 
 ```ts
-import { html } from "https://denopkg.com/motss/deno_mod@v0.4.1/lit_ntml/mod.ts";
+import { html } from "https://denopkg.com/motss/deno_mod@v0.5.0/lit_ntml/mod.ts";
 
 const peopleList = ["Cash Black", "Vict Fisherman"];
 const syncTask = () => `<h1>Hello, World!</h1>`;
@@ -40,7 +40,7 @@ await html`${syncTask}${asyncLiteral}${asyncListTask}`; /** <!DOCTYPE html><html
 #### htmlFragment()
 
 ```ts
-import { htmlFragment as html } from "https://denopkg.com/motss/deno_mod@v0.4.1/lit_ntml/mod.ts";
+import { htmlFragment as html } from "https://denopkg.com/motss/deno_mod@v0.5.0/lit_ntml/mod.ts";
 
 const syncTask = () => `<h1>Hello, World!</h1>`;
 const externalStyleLiteral = `<style>body { margin: 0; padding: 0; box-sizing: border-box; }</style>`;
