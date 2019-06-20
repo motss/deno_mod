@@ -12,20 +12,20 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Usage](#usage)
+- [Usage](#Usage)
     - [html()](#html)
-    - [htmlFragment()](#htmlfragment)
-- [API Reference](#api-reference)
+    - [htmlFragment()](#htmlFragment)
+- [API Reference](#API-Reference)
   - [html()](#html-1)
-  - [htmlFragment()](#htmlfragment-1)
-- [License](#license)
+  - [htmlFragment()](#htmlFragment-1)
+- [License](#License)
 
 ## Usage
 
 #### html()
 
 ```ts
-import { html } from "https://denopkg.com/motss/deno_mod@v0.5.0/lit_ntml/mod.ts";
+import { html } from "https://denopkg.com/motss/deno_mod@v0.6.0/lit_ntml/mod.ts";
 
 const peopleList = ["Cash Black", "Vict Fisherman"];
 const syncTask = () => `<h1>Hello, World!</h1>`;
@@ -40,7 +40,7 @@ await html`${syncTask}${asyncLiteral}${asyncListTask}`; /** <!DOCTYPE html><html
 #### htmlFragment()
 
 ```ts
-import { htmlFragment as html } from "https://denopkg.com/motss/deno_mod@v0.5.0/lit_ntml/mod.ts";
+import { htmlFragment as html } from "https://denopkg.com/motss/deno_mod@v0.6.0/lit_ntml/mod.ts";
 
 const syncTask = () => `<h1>Hello, World!</h1>`;
 const externalStyleLiteral = `<style>body { margin: 0; padding: 0; box-sizing: border-box; }</style>`;

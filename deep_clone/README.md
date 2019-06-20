@@ -12,17 +12,17 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Usage](#usage)
-- [API Reference](#api-reference)
-  - [deepClone&lt;T&gt;(target[, options])](#deepclonelttgttarget-options)
-  - [deepCloneSync(target[, options])](#deepclonesynctarget-options)
-- [License](#license)
+- [Usage](#Usage)
+- [API Reference](#API-Reference)
+  - [deepClone&lt;T&gt;(target[, options])](#deepCloneltTgttarget-options)
+  - [deepCloneSync(target[, options])](#deepCloneSynctarget-options)
+- [License](#License)
 
 ## Usage
 
 ```ts
 /** Import from GH via `denopkg` */
-import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.5.0/deep_clone/mod.ts";
+import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.6.0/deep_clone/mod.ts";
 
 (async () => {
   const simpleObject = {
