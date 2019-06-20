@@ -1,27 +1,10 @@
 import {
   assertStrictEq,
   assertEquals,
-  assertThrowsAsync,
   prepareTest,
 } from "../test.mod.ts";
 
 import { normalize } from "./mod.ts";
-
-async function failsWhenInvalidInput() {
-  await assertThrowsAsync(
-    async () => (normalize(null) as unknown) as void,
-    TypeError,
-    `Expected 'input' to be of type string, but received 'null'`
-  );
-}
-
-async function failsWhenInputIsUndefined() {
-  await assertThrowsAsync(
-    async () => (normalize() as unknown) as void,
-    TypeError,
-    `Expected 'input' to be of type string, but received 'undefined'`
-  );
-}
 
 async function willSkipNormalizationForEmptyCharacter() {
   assertStrictEq(await normalize(""), "");
@@ -74,9 +57,6 @@ async function willNormalizeNonAccentedCharacter() {
 }
 
 prepareTest([
-  failsWhenInvalidInput,
-  failsWhenInputIsUndefined,
-
   willSkipNormalizationForEmptyCharacter,
   willNormalizeSingleCharacter,
   willNormalizeAccentedCharacters,

@@ -1,23 +1,7 @@
-import { assertStrictEq, assertThrowsAsync, prepareTest } from "../test.mod.ts";
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { htmlFragment } from "./mod.ts";
-
-const helloWorld = `<h1>Hello, World!</h1>`;
-const peopleList = ["John Doe", "Michael CEO", "Vict Fisherman", "Cash Black"];
-const html = htmlFragment;
-
-async function failsWhenErrorHappens() {
-  await assertThrowsAsync(
-    async () => {
-      const errorContent = async () => {
-        throw new Error("error");
-      };
-      await html`${errorContent}`;
-    },
-    Error,
-    "error"
-  );
-}
+import { helloWorld, peopleList } from './CONSTANTS.ts';
+import { htmlFragment as html } from "./mod.ts";
 
 async function willRender() {
   const d = await html`${helloWorld}`;
@@ -87,8 +71,6 @@ async function willRenderExternalStyle() {
 }
 
 prepareTest([
-  failsWhenErrorHappens,
-
   willRender,
   willRenderAListOfSyncTasks,
   willRenderExternalStyle,

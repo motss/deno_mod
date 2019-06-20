@@ -1,4 +1,4 @@
-import { delayUntil } from './delay_until.ts';
+import { delayUntil } from '../delay_until/mod.ts';
 import { PollingMeasure } from './polling_measure.ts';
 
 export interface PollingObserverOptions {

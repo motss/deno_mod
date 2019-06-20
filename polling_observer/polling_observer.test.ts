@@ -1,43 +1,8 @@
-interface MockData {
-  items: number[];
-  status?: 'complete' | 'in-progress';
-}
+import { assertStrictEq, assertEquals, prepareTest } from "../test.mod.ts";
 
-import {
-  assertStrictEq,
-  assertEquals,
-  assertThrowsAsync,
-  prepareTest,
-} from "../test.mod.ts";
-import { PollingObserver, OnfinishRejected, OnfinishFulfilled } from "./mod.ts";
+import { MockData } from './CONSTANTS.ts';
 import { PollingMeasure } from "./polling_measure.ts";
-
-async function failsWhenConditionCallbackIsUndefined() {
-  await assertThrowsAsync(
-    async () => new PollingObserver(undefined) as unknown as void,
-    TypeError,
-    `'conditionCallback' is not defined`
-  );
-}
-
-async function failsWhenErrorOccurs() {
-  const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<OnfinishRejected>((yay) => {
-    obs.onfinish = (d: OnfinishRejected) => yay(d);
-  });
-
-  obs.observe(
-    async () => {
-      throw new Error('polling error');
-    },
-    { interval: 1e3 });
-
-  const { status, reason } = await task;
-
-  assertStrictEq(status, "error");
-  assertStrictEq(reason instanceof Error, true);
-  assertStrictEq(reason.message, "polling error");
-}
+import { PollingObserver, OnfinishFulfilled } from "./mod.ts";
 
 async function willFinishPollingWithConditionFulfills() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
@@ -404,9 +369,6 @@ async function willFireFinishEvent() {
 }
 
 prepareTest([
-  failsWhenConditionCallbackIsUndefined,
-  failsWhenErrorOccurs,
-
   willFinishPollingWithConditionFulfills,
   willTimeoutAPolling,
   willTimeoutAPollingWithMoreThanOneRepeat,

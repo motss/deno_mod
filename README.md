@@ -15,9 +15,9 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Pre-requisite](#pre-requisite)
-- [Available modules](#available-modules)
-- [License](#license)
+- [Pre-requisite](#Pre-requisite)
+- [Available modules](#Available-modules)
+- [License](#License)
 
 ## Pre-requisite
 
@@ -30,6 +30,7 @@
 - [lit_ntml] - Expressive HTML Templates
 - [normalize_diacritics] - Remove accents/ diacritics in string
 - [polling_observer] - A new way of running polling function with observer pattern
+- [delay_until] - A typical delay function but Promise based
 
 ## License
 
@@ -45,6 +46,7 @@
 [lit_ntml]: /lit_ntml
 [normalize_diacritics]: /normalize_diacritics
 [polling_observer]: /polling_observer
+[delay_until]: /delay_until
 
 <!-- Badges -->
 

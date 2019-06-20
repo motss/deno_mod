@@ -2,155 +2,11 @@ import {
   equal,
   assert,
   assertStrictEq,
-  assertThrowsAsync,
   prepareTest,
 } from "../test.mod.ts";
 
-import { deepClone, deepCloneSync } from "./mod.ts";
-
-const towno = {
-  a: {
-    b: {
-      c: {
-        d: {
-          e: [1, 2, 3],
-          f: "random-string",
-          g: () => null,
-          re: /haha/gi,
-          createdAt: new Date()
-        }
-      }
-    },
-    j: 999,
-    k: [
-      {
-        l: {
-          m: {
-            n: 0
-          }
-        }
-      },
-      {
-        o: 999
-      },
-      {
-        p: [
-          {
-            q: 999,
-            r: [
-              {
-                s: {
-                  t: {
-                    u: "deep-string"
-                  }
-                }
-              },
-              {
-                v: null
-              },
-              Symbol(
-                Math.random()
-                  .toString(16)
-                  .slice(-7)
-              )
-            ]
-          },
-          {
-            w: () => null,
-            re: /^hello\sworld/gi
-          },
-          {
-            x: {
-              y: {
-                z: [1, 2]
-              }
-            }
-          }
-        ]
-      }
-    ]
-  },
-  h: [1, 2],
-  i: "random-string-depth-0",
-  j: Symbol("haha")
-};
-const owno = {
-  a: {
-    b: {
-      c: {
-        d: [1, 2, 3]
-      }
-    },
-    e: {
-      f: 111,
-      g: "deep-string",
-      h: [
-        { i: 999 },
-        {
-          j: [
-            {
-              k: {
-                l: "deep-string"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    m: null
-  },
-  n: 999
-};
-const awno = [
-  [
-    [
-      {
-        a: {
-          b: [
-            {
-              c: [
-                [
-                  {
-                    d: 999
-                  }
-                ]
-              ]
-            }
-          ]
-        },
-        e: [[1, 2, 3]]
-      }
-    ],
-    "deep-string",
-    1,
-    2
-  ],
-  null,
-  "deep-string",
-  [1, 2]
-];
-
-async function failsWhenDeeplyCloneNull() {
-  assertThrowsAsync(
-    async () => {
-      const nu = null;
-      await deepClone(nu);
-    },
-    TypeError,
-    `'target' is not defined`
-  );
-}
-
-async function failsWhenDeeplyCloneUndefined() {
-  assertThrowsAsync(
-    async () => {
-      const nu = void 0;
-      await deepClone(nu);
-    },
-    TypeError,
-    `'target' is not defined`
-  );
-}
+import { deepClone } from "./mod.ts";
+import { owno, awno, towno } from './CONSTANTS.ts';
 
 async function willDeeplyCloneNestedObject() {
   assert(equal(await deepClone(owno), owno));
@@ -257,22 +113,7 @@ async function willDeepCloningWithAbsoluteFlagBeforeMutatingClonedObject() {
   assert(!equal(dc, towno));
 }
 
-function willDeepCloneSync() {
-  const dc = deepCloneSync(owno);
-
-  assert(equal(dc, owno));
-}
-
-function willDeepCloneSyncWithAbsoluteFlag() {
-  const dc = deepCloneSync(towno, { absolute: true });
-
-  assert(equal(dc, towno));
-}
-
 prepareTest([
-  failsWhenDeeplyCloneNull,
-  failsWhenDeeplyCloneUndefined,
-
   willDeeplyCloneNestedObject,
   willTrulyDeepCloneNestedObject,
 
@@ -291,7 +132,4 @@ prepareTest([
 
   willDeepCloningWithAbsoluteFlag,
   willDeepCloningWithAbsoluteFlagBeforeMutatingClonedObject,
-
-  willDeepCloneSync,
-  willDeepCloneSyncWithAbsoluteFlag
 ], "deep_clone");
