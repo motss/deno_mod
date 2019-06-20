@@ -21,7 +21,7 @@
 
 ## Pre-requisite
 
-- [deno] >= 0.3.6
+- [deno] >= 0.9.0
 - [deno_std] >= 0.3.4
 
 ## Available modules
