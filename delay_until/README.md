@@ -14,7 +14,7 @@
 
 - [Usage](#Usage)
 - [API Reference](#API-Reference)
-  - [delayUntil([delayInMilliseconds])](#delayUntildelayInMilliseconds)
+  - [delayUntil([delay])](#delayUntildelay)
 - [License](#License)
 
 ## Usage
@@ -32,7 +32,7 @@ import { delayUntil } from "https://denopkg.com/motss/deno_mod@v0.6.0/delay_unti
 
 ## API Reference
 
-### delayUntil([delayInMilliseconds])
+### delayUntil([delay])
 
 - `delay` <?[number][number-mdn-url]> The delay, in milliseconds, the function should wait for before any code after where the delay function is called can be executed. This does not affect code execution in other thread, module, or even file.
 - returns: <[Promise][promise-mdn-url]<`undefined`>> Promise which resolves with no return value.
