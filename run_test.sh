@@ -1,1 +1,1 @@
-deno run ./test.ts --reload
+deno run --reload --allow-net ./test.ts
