@@ -12,7 +12,7 @@ import { mock } from "./fetch_as/mod.test.ts";
 
 async function test() {
   await runTests({ parallel: true });
-  console.log('tests completed', mock.close());
+  // console.log('tests completed', mock.close());
 }
 
 test();
