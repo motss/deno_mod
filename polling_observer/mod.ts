@@ -133,5 +133,3 @@ export class PollingObserver<T> extends EventTarget {
     return this._records;
   }
 }
-
-export default PollingObserver;

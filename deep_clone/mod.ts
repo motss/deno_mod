@@ -15,5 +15,3 @@ export function deepCloneSync<T>(target: T, options?: DeepCloneOptions): T {
 export async function deepClone<T>(target: T, options?: DeepCloneOptions) {
   return deepCloneSync<T>(target, options);
 }
-
-export default deepClone;

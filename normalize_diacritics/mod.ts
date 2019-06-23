@@ -26,4 +26,3 @@ export async function normalize(input?: string | null) {
 }
 
 export { Diacritics, diacritics } from "./helpers.ts";
-export default normalize;

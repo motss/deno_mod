@@ -38,5 +38,3 @@ export const html = async (s: TemplateStringsArray, ...e: any[]) =>
   parsePartial((c: unknown) => parse(`<!doctype html>${c}`), s, ...e);
 export const htmlFragment = async (s: TemplateStringsArray, ...e: any[]) =>
   parsePartial(parseFragment, s, ...e);
-
-export default { html, htmlFragment };
