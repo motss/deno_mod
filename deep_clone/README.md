@@ -22,7 +22,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.6.0/deep_clone/mod.ts";
+import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.6.1/deep_clone/mod.ts";
 
 (async () => {
   const simpleObject = {

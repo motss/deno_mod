@@ -38,7 +38,7 @@ interface DataType {
   items: Record<string, any>[];
 }
 
-import { PollingObserver } from 'https://denopkg.com/motss/deno_mod@v0.6.0/polling_observer/mod.ts';
+import { PollingObserver } from 'https://denopkg.com/motss/deno_mod@v0.6.1/polling_observer/mod.ts';
 
 const obs = new PollingObserver((data/** list, observer */) => {
   const { status, items } = data || {};
