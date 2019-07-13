@@ -244,6 +244,6 @@ export const diacritics: Diacritics[] = [
 // tslint:enable:max-line-length
 
 export function removeDiacritics(s: string) {
-  const normalized = diacritics.find(n => n.diacritics.test(s));
+  const normalized = diacritics.find(n => (new RegExp(n.diacritics)).test(s));
   return null == normalized ? s : normalized.letter;
 }

@@ -56,11 +56,19 @@ async function willNormalizeNonAccentedCharacter() {
   assertStrictEq(await normalize("\u00d8"), "O");
 }
 
+async function willNormalizeRepeatedCharacters() {
+  assertStrictEq(await normalize("éééé"), "eeee");
+  assertStrictEq(await normalize("åååå"), "aaaa");
+  assertStrictEq(await normalize("éåéåéåéå"), "eaeaeaea");
+  assertStrictEq(await normalize("åéåéåéåé"), "aeaeaeae");
+}
+
 prepareTest([
   willSkipNormalizationForEmptyCharacter,
   willNormalizeSingleCharacter,
   willNormalizeAccentedCharacters,
   willNormalizeAccentedCharactersWithoutUsingNativeFunction,
   willReturnOriginalCharacterWhenNoMatchFound,
-  willNormalizeNonAccentedCharacter
+  willNormalizeNonAccentedCharacter,
+  willNormalizeRepeatedCharacters,
 ], "normalize_diacritics");
