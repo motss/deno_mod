@@ -15,14 +15,14 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Pre-requisite](#Pre-requisite)
-- [Available modules](#Available-modules)
-- [License](#License)
+- [Pre-requisite](#pre-requisite)
+- [Available modules](#available-modules)
+- [License](#license)
 
 ## Pre-requisite
 
-- [deno] >= 0.9.0
-- [deno_std] >= 0.3.4
+- [deno] >= 0.20.0
+- [deno_std] >= 0.20.0
 
 ## Available modules
 
