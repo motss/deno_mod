@@ -21,8 +21,7 @@
 
 ## Pre-requisite
 
-- [deno] >= 0.20.0
-- [deno_std] >= 0.20.0
+- [deno] >= 0.21.0
 
 ## Available modules
 
@@ -39,7 +38,6 @@
 <!-- References -->
 
 [deno]: https://github.com/denoland/deno
-[deno_std]: https://github.com/denoland/deno_std
 
 <!-- Modules -->
 [deep_clone]: /deep_clone
