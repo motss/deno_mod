@@ -4,7 +4,7 @@ import { extend } from './extend.ts';
 
 import {
   isSymbol,
-} from './Symbol.ts';
+} from './symbol.ts';
 
 extend({
   symbol: [
