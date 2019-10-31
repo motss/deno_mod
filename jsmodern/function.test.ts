@@ -1,29 +1,29 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
 import {
   isAsyncFunction,
   isAsyncGeneratorFunction,
   isFunction,
-  isGeneratorFunction,
-} from './function.ts';
+  isGeneratorFunction
+} from "./function.ts";
 
 extend({
   function: [
     isAsyncFunction,
     isAsyncGeneratorFunction,
     isFunction,
-    isGeneratorFunction,
-  ],
+    isGeneratorFunction
+  ]
 });
 
 async function willExtendFunctionConstructor() {
   const extensions = [
-    ['Function.isAsyncFunction', 'isAsyncFunction'],
-    ['Function.isAsyncGeneratorFunction', 'isAsyncGeneratorFunction'],
-    ['Function.isFunction', 'isFunction'],
-    ['Function.isGeneratorFunction', 'isGeneratorFunction'],
+    ["Function.isAsyncFunction", "isAsyncFunction"],
+    ["Function.isAsyncGeneratorFunction", "isAsyncGeneratorFunction"],
+    ["Function.isFunction", "isFunction"],
+    ["Function.isGeneratorFunction", "isGeneratorFunction"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Function;
@@ -32,6 +32,4 @@ async function willExtendFunctionConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendFunctionConstructor,
-], 'jsmodern', 'function');
+prepareTest([willExtendFunctionConstructor], "jsmodern", "function");

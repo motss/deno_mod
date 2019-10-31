@@ -1,26 +1,18 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
-import {
-  from,
-  isWeakMap,
-  of,
-} from './weak-map.ts';
+import { from, isWeakMap, of } from "./weak-map.ts";
 
 extend({
-  weakMap: [
-    from,
-    isWeakMap,
-    of,
-  ],
+  weakMap: [from, isWeakMap, of]
 });
 
 async function willExtendWeakMapConstructor() {
   const extensions = [
-    ['WeakMap.from', 'from'],
-    ['WeakMap.isWeakMap', 'isWeakMap'],
-    ['WeakMap.of', 'of'],
+    ["WeakMap.from", "from"],
+    ["WeakMap.isWeakMap", "isWeakMap"],
+    ["WeakMap.of", "of"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in WeakMap;
@@ -29,6 +21,4 @@ async function willExtendWeakMapConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendWeakMapConstructor,
-], 'jsmodern', 'weakMap');
+prepareTest([willExtendWeakMapConstructor], "jsmodern", "weakMap");

@@ -1,13 +1,14 @@
 import { assertStrictEq, assertEquals, prepareTest } from "../test.mod.ts";
 
-import { MockData } from './CONSTANTS.ts';
-import { PollingMeasure } from "./polling_measure.ts";
-import { PollingObserver, OnfinishFulfilled } from "./mod.ts";
+import { MockData } from "./CONSTANTS.ts";
+import { PollingObserver, OnfinishFulfilled, PollingMeasure } from "./mod.ts";
 
 async function willFinishPollingWithConditionFulfills() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
-  const obs = new PollingObserver<MockData>((d: MockData) => Boolean(d && d.items.length > 0));
-  const task = new Promise<OnfinishFulfilled<MockData>>((yay) => {
+  const obs = new PollingObserver<MockData>((d: MockData) =>
+    Boolean(d && d.items.length > 0)
+  );
+  const task = new Promise<OnfinishFulfilled<MockData>>(yay => {
     obs.onfinish = (d: OnfinishFulfilled<MockData>) => yay(d);
   });
 
@@ -15,7 +16,8 @@ async function willFinishPollingWithConditionFulfills() {
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 2e3));
     },
-    { interval: 1e3, timeout: 5e3 });
+    { interval: 1e3, timeout: 5e3 }
+  );
 
   const { status, value } = await task;
 
@@ -26,7 +28,7 @@ async function willFinishPollingWithConditionFulfills() {
 async function willTimeoutAPolling() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<OnfinishFulfilled<MockData>>((yay) => {
+  const task = new Promise<OnfinishFulfilled<MockData>>(yay => {
     obs.onfinish = (d: OnfinishFulfilled<MockData>) => yay(d);
   });
 
@@ -34,7 +36,8 @@ async function willTimeoutAPolling() {
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 7e3));
     },
-    { interval: 1e3, timeout: 5e3 });
+    { interval: 1e3, timeout: 5e3 }
+  );
 
   const { status, value } = await task;
 
@@ -45,7 +48,7 @@ async function willTimeoutAPolling() {
 async function willTimeoutAPollingWithMoreThanOneRepeat() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<OnfinishFulfilled<MockData>>((yay) => {
+  const task = new Promise<OnfinishFulfilled<MockData>>(yay => {
     obs.onfinish = (d: OnfinishFulfilled<MockData>) => yay(d);
   });
 
@@ -57,7 +60,8 @@ async function willTimeoutAPollingWithMoreThanOneRepeat() {
        */
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 1e3, timeout: 5e3 });
+    { interval: 1e3, timeout: 5e3 }
+  );
 
   const { status, value } = await task;
 
@@ -68,15 +72,19 @@ async function willTimeoutAPollingWithMoreThanOneRepeat() {
 async function willReadRecordsWhenPollingFinishes() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 1e3, timeout: 5e3 });
+    { interval: 1e3, timeout: 5e3 }
+  );
 
   const [{ status, value }, records] = await task;
 
@@ -86,32 +94,68 @@ async function willReadRecordsWhenPollingFinishes() {
   assertStrictEq(records.length > 1, true);
 
   const firstRecord = records[0].toJSON();
-  assertStrictEq("number" === typeof(firstRecord.duration) && !Number.isNaN(firstRecord.duration), true);
-  assertStrictEq("string" === typeof(firstRecord.entryType) && "polling-measure" === firstRecord.entryType, true);
-  assertStrictEq("string" === typeof(firstRecord.name) && /^polling:\d+/gi.test(firstRecord.name), true);
-  assertStrictEq("number" === typeof(firstRecord.startTime) && !Number.isNaN(firstRecord.startTime), true);
+  assertStrictEq(
+    "number" === typeof firstRecord.duration &&
+      !Number.isNaN(firstRecord.duration),
+    true
+  );
+  assertStrictEq(
+    "string" === typeof firstRecord.entryType &&
+      "polling-measure" === firstRecord.entryType,
+    true
+  );
+  assertStrictEq(
+    "string" === typeof firstRecord.name &&
+      /^polling:\d+/gi.test(firstRecord.name),
+    true
+  );
+  assertStrictEq(
+    "number" === typeof firstRecord.startTime &&
+      !Number.isNaN(firstRecord.startTime),
+    true
+  );
 
   assertStrictEq(obs.takeRecords().length > 1, true);
 
   const firstRecordTaken = obs.takeRecords()[0].toJSON();
-  assertStrictEq("number" === typeof(firstRecordTaken.duration) && !Number.isNaN(firstRecordTaken.duration), true);
-  assertStrictEq("string" === typeof(firstRecordTaken.entryType) && "polling-measure" === firstRecordTaken.entryType, true);
-  assertStrictEq("string" === typeof(firstRecordTaken.name) && /^polling:\d+/gi.test(firstRecordTaken.name), true);
-  assertStrictEq("number" === typeof(firstRecordTaken.startTime) && !Number.isNaN(firstRecordTaken.startTime), true);
+  assertStrictEq(
+    "number" === typeof firstRecordTaken.duration &&
+      !Number.isNaN(firstRecordTaken.duration),
+    true
+  );
+  assertStrictEq(
+    "string" === typeof firstRecordTaken.entryType &&
+      "polling-measure" === firstRecordTaken.entryType,
+    true
+  );
+  assertStrictEq(
+    "string" === typeof firstRecordTaken.name &&
+      /^polling:\d+/gi.test(firstRecordTaken.name),
+    true
+  );
+  assertStrictEq(
+    "number" === typeof firstRecordTaken.startTime &&
+      !Number.isNaN(firstRecordTaken.startTime),
+    true
+  );
 }
 
 async function willClearRecordsWhenObserverDisconnects() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 1e3, timeout: 5e3 });
+    { interval: 1e3, timeout: 5e3 }
+  );
 
   const [{ status, value }, records] = await task;
 
@@ -134,15 +178,19 @@ async function willForcePollingToStopByDisconnecting() {
     obs.disconnect();
     return false;
   });
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 2e3, timeout: 5e3 });
+    { interval: 2e3, timeout: 5e3 }
+  );
 
   const [{ status, value }, records] = await task;
 
@@ -155,28 +203,28 @@ async function willForcePollingToStopByDisconnecting() {
 async function willDisconnectBeforeFirstPollingInitiates() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
 
   obs.observe(
     async () => {
-      console.log('2');
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 2e3, timeout: 5e3 });
+    { interval: 2e3, timeout: 5e3 }
+  );
+  obs.onfinish = (d, records) => {
+    const { status, value } = d as OnfinishFulfilled<MockData>;
+
+    assertStrictEq(status, "finish");
+    assertStrictEq(value, void 0);
+    assertStrictEq(records.length, 0);
+    assertStrictEq(obs.takeRecords().length, 0);
+  };
   obs.disconnect();
-
-  const [{ status, value }, records] = await task;
-
-  assertStrictEq(status, "finish");
-  assertEquals(value, { ...data });
-  assertStrictEq(records.length > 0, true);
-  assertStrictEq(!obs.takeRecords().length, true);
 }
 
 async function willReobserveAfterDisconnected() {
-  const getMockData = (): MockData => ({ items: [Math.floor(Math.random() * Math.PI)] });
+  const getMockData = (): MockData => ({
+    items: [Math.floor(Math.random() * Math.PI)]
+  });
   const pollingFn = (d: MockData) => async () => {
     return new Promise<MockData>(yay => setTimeout(() => yay(d), 1));
   };
@@ -185,9 +233,12 @@ async function willReobserveAfterDisconnected() {
   const pollingOpts = { interval: 1e3, timeout: 3e3 };
 
   const mockData = getMockData();
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(pollingFn(mockData), pollingOpts);
 
@@ -203,9 +254,12 @@ async function willReobserveAfterDisconnected() {
 
   {
     const mockData2 = getMockData();
-    const task2 = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-    });
+    const task2 = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+      yay => {
+        obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+          yay([d, r]);
+      }
+    );
 
     obs.observe(pollingFn(mockData2), pollingOpts);
 
@@ -221,7 +275,7 @@ async function willReobserveAfterDisconnected() {
 async function willPollWithOptionalInterval() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(() => false);
-  const task = new Promise<OnfinishFulfilled<MockData>>((yay) => {
+  const task = new Promise<OnfinishFulfilled<MockData>>(yay => {
     obs.onfinish = (d: OnfinishFulfilled<MockData>) => yay(d);
   });
 
@@ -229,7 +283,8 @@ async function willPollWithOptionalInterval() {
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { timeout: 5e3 });
+    { timeout: 5e3 }
+  );
 
   const { status, value } = await task;
 
@@ -246,15 +301,19 @@ async function willPollWithOptionalTimeout() {
     const endsAt = +new Date();
     return Math.floor(endsAt - startsAt) > 5e3;
   });
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 2e3 });
+    { interval: 2e3 }
+  );
 
   const [{ status, value }, records] = await task;
 
@@ -272,14 +331,16 @@ async function willPollWithOptionalOptions() {
     const endsAt = +new Date();
     return Math.floor(endsAt - startsAt) > 5e3;
   });
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
-  obs.observe(
-    async () => {
-      return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
-    });
+  obs.observe(async () => {
+    return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
+  });
 
   const [{ status, value }, records] = await task;
 
@@ -292,15 +353,19 @@ async function willPollWithOptionalOptions() {
 async function willPollWithAsyncConditionCallback() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(async () => false);
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(
     async () => {
       return new Promise<MockData>(yay => setTimeout(() => yay(data), 1));
     },
-    { interval: 2e3, timeout: 5e3 });
+    { interval: 2e3, timeout: 5e3 }
+  );
 
   const [{ status, value }, records] = await task;
 
@@ -313,9 +378,12 @@ async function willPollWithAsyncConditionCallback() {
 async function willPollWithSyncCallback() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(async () => false);
-  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>((yay) => {
-    obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) => yay([d, r]);
-  });
+  const task = new Promise<[OnfinishFulfilled<MockData>, PollingMeasure[]]>(
+    yay => {
+      obs.onfinish = (d: OnfinishFulfilled<MockData>, r: PollingMeasure[]) =>
+        yay([d, r]);
+    }
+  );
 
   obs.observe(() => data, { interval: 2e3, timeout: 5e3 });
 
@@ -330,9 +398,11 @@ async function willPollWithSyncCallback() {
 async function willPollWithoutOnfinishCallback() {
   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
   const obs = new PollingObserver<MockData>(async () => false);
-  const task = new Promise<PollingMeasure[]>(yay => setTimeout(() => {
-    yay(obs.takeRecords());
-  }, 8e3));
+  const task = new Promise<PollingMeasure[]>(yay =>
+    setTimeout(() => {
+      yay(obs.takeRecords());
+    }, 8e3)
+  );
 
   obs.observe(() => data, { interval: 2e3, timeout: 5e3 });
 
@@ -340,48 +410,47 @@ async function willPollWithoutOnfinishCallback() {
   assertEquals((await task).length > 1, true);
 }
 
-async function willFireFinishEvent() {
-  const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
-  const obs = new PollingObserver<MockData>(async () => false);
-  const task = new Promise<CustomEvent>((yay) => {
-    obs.addEventListener(
-      'finish',
-      // (ev: CustomEvent<[OnfinishFulfilled<MockData>, PollingMeasure[]]>) => yay(ev.detail)
-      (ev: CustomEvent) => yay(ev)
-    );
-  });
+// async function willFireFinishEvent() {
+//   const data: MockData = { items: [Math.floor(Math.random() * Math.PI)] };
+//   const obs = new PollingObserver<MockData>(async () => false);
+//   const task = new Promise<CustomEvent>(yay => {
+//     obs.addEventListener(
+//       "finish",
+//       // (ev: CustomEvent<[OnfinishFulfilled<MockData>, PollingMeasure[]]>) => yay(ev.detail)
+//       (ev: CustomEvent) => yay(ev)
+//     );
+//   });
 
-  obs.observe(() => data, { interval: 2e3, timeout: 5e3 });
+//   obs.observe(() => data, { interval: 2e3, timeout: 5e3 });
 
-  const {
-    detail: [
-      { status, value },
-      records,
-    ],
-    // [OnfinishFulfilled<MockData>, PollingMeasure[]]
-  } = await task;
+//   const {
+//     detail: [{ status, value }, records]
+//     // [OnfinishFulfilled<MockData>, PollingMeasure[]]
+//   } = await task;
 
+//   assertStrictEq(status, "timeout");
+//   assertEquals(value, { ...data });
+//   assertStrictEq(records.length > 1, true);
+//   assertStrictEq(obs.takeRecords().length > 1, true);
+// }
 
-  assertStrictEq(status, "timeout");
-  assertEquals(value, { ...data });
-  assertStrictEq(records.length > 1, true);
-  assertStrictEq(obs.takeRecords().length > 1, true);
-}
-
-prepareTest([
-  willFinishPollingWithConditionFulfills,
-  willTimeoutAPolling,
-  willTimeoutAPollingWithMoreThanOneRepeat,
-  willReadRecordsWhenPollingFinishes,
-  willClearRecordsWhenObserverDisconnects,
-  willForcePollingToStopByDisconnecting,
-  willDisconnectBeforeFirstPollingInitiates,
-  willReobserveAfterDisconnected,
-  willPollWithOptionalInterval,
-  willPollWithOptionalTimeout,
-  willPollWithOptionalOptions,
-  willPollWithAsyncConditionCallback,
-  willPollWithSyncCallback,
-  willPollWithoutOnfinishCallback,
-  willFireFinishEvent,
-], "polling_observer");
+prepareTest(
+  [
+    willFinishPollingWithConditionFulfills,
+    willTimeoutAPolling,
+    willTimeoutAPollingWithMoreThanOneRepeat,
+    willReadRecordsWhenPollingFinishes,
+    willClearRecordsWhenObserverDisconnects,
+    willForcePollingToStopByDisconnecting,
+    willDisconnectBeforeFirstPollingInitiates,
+    willReobserveAfterDisconnected,
+    willPollWithOptionalInterval,
+    willPollWithOptionalTimeout,
+    willPollWithOptionalOptions,
+    willPollWithAsyncConditionCallback,
+    willPollWithSyncCallback,
+    willPollWithoutOnfinishCallback
+    // willFireFinishEvent
+  ],
+  "polling_observer"
+);

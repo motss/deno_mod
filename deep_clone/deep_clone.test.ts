@@ -1,12 +1,7 @@
-import {
-  equal,
-  assert,
-  assertStrictEq,
-  prepareTest,
-} from "../test.mod.ts";
+import { equal, assert, assertStrictEq, prepareTest } from "../test.mod.ts";
 
 import { deepClone } from "./mod.ts";
-import { owno, awno, towno } from './CONSTANTS.ts';
+import { owno, awno, towno } from "./CONSTANTS.ts";
 
 async function willDeeplyCloneNestedObject() {
   assert(equal(await deepClone(owno), owno));
@@ -113,23 +108,26 @@ async function willDeepCloningWithAbsoluteFlagBeforeMutatingClonedObject() {
   assert(!equal(dc, towno));
 }
 
-prepareTest([
-  willDeeplyCloneNestedObject,
-  willTrulyDeepCloneNestedObject,
+prepareTest(
+  [
+    willDeeplyCloneNestedObject,
+    willTrulyDeepCloneNestedObject,
 
-  willDeeplyCloneNestedArray,
-  willTrulyDeepCloneNestedArray,
+    willDeeplyCloneNestedArray,
+    willTrulyDeepCloneNestedArray,
 
-  willDeeplyCloneNonNestedObject,
-  willTrulyDeepCloneNonNestedObject,
+    willDeeplyCloneNonNestedObject,
+    willTrulyDeepCloneNonNestedObject,
 
-  willDeeplyCloneNonNestedArray,
-  willTrulyDeepCloneNonNestedArray,
+    willDeeplyCloneNonNestedArray,
+    willTrulyDeepCloneNonNestedArray,
 
-  willDeepCloneString,
-  willDeepCloneNumber,
-  willDeepCloneBoolean,
+    willDeepCloneString,
+    willDeepCloneNumber,
+    willDeepCloneBoolean,
 
-  willDeepCloningWithAbsoluteFlag,
-  willDeepCloningWithAbsoluteFlagBeforeMutatingClonedObject,
-], "deep_clone");
+    willDeepCloningWithAbsoluteFlag,
+    willDeepCloningWithAbsoluteFlagBeforeMutatingClonedObject
+  ],
+  "deep_clone"
+);

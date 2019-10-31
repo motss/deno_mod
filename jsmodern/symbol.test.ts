@@ -1,21 +1,15 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
-import {
-  isSymbol,
-} from './symbol.ts';
+import { isSymbol } from "./symbol.ts";
 
 extend({
-  symbol: [
-    isSymbol,
-  ],
+  symbol: [isSymbol]
 });
 
 async function willExtendSymbolConstructor() {
-  const extensions = [
-    ['Symbol.isSymbol', 'isSymbol'],
-  ];
+  const extensions = [["Symbol.isSymbol", "isSymbol"]];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Symbol;
   });
@@ -23,6 +17,4 @@ async function willExtendSymbolConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendSymbolConstructor,
-], 'jsmodern', 'symbol');
+prepareTest([willExtendSymbolConstructor], "jsmodern", "symbol");

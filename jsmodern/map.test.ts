@@ -1,6 +1,6 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
 import {
   entry,
@@ -13,8 +13,8 @@ import {
   len,
   of,
   removeEntry,
-  toArray,
-} from './map.ts';
+  toArray
+} from "./map.ts";
 
 extend({
   map: [
@@ -28,20 +28,20 @@ extend({
     len,
     of,
     removeEntry,
-    toArray,
-  ],
+    toArray
+  ]
 });
 
 async function willExtendMapPrototype() {
   const extensions = [
-    ['Map.prototype.entry', 'entry'],
-    ['Map.prototype.entryOrDefault', 'entryOrDefault'],
-    ['Map.prototype.getOrDefault', 'getOrDefault'],
-    ['Map.prototype.isEmpty', 'isEmpty'],
-    ['Map.prototype.iter', 'iter'],
-    ['Map.prototype.len', 'len'],
-    ['Map.prototype.removeEntry', 'removeEntry'],
-    ['Map.prototype.toArray', 'toArray'],
+    ["Map.prototype.entry", "entry"],
+    ["Map.prototype.entryOrDefault", "entryOrDefault"],
+    ["Map.prototype.getOrDefault", "getOrDefault"],
+    ["Map.prototype.isEmpty", "isEmpty"],
+    ["Map.prototype.iter", "iter"],
+    ["Map.prototype.len", "len"],
+    ["Map.prototype.removeEntry", "removeEntry"],
+    ["Map.prototype.toArray", "toArray"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Map.prototype;
@@ -52,9 +52,9 @@ async function willExtendMapPrototype() {
 
 async function willExtendMapConstructor() {
   const extensions = [
-    ['Map.from', 'from'],
-    ['Map.isMap', 'isMap'],
-    ['Map.of', 'of'],
+    ["Map.from", "from"],
+    ["Map.isMap", "isMap"],
+    ["Map.of", "of"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Map;
@@ -63,7 +63,8 @@ async function willExtendMapConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendMapConstructor,
-  willExtendMapPrototype,
-], 'jsmodern', 'map');
+prepareTest(
+  [willExtendMapConstructor, willExtendMapPrototype],
+  "jsmodern",
+  "map"
+);

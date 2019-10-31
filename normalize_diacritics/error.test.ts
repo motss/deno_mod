@@ -1,7 +1,4 @@
-import {
-  assertThrowsAsync,
-  prepareTest,
-} from "../test.mod.ts";
+import { assertThrowsAsync, prepareTest } from "../test.mod.ts";
 
 import { normalize } from "./mod.ts";
 
@@ -21,7 +18,8 @@ async function failsWhenInputIsUndefined() {
   );
 }
 
-prepareTest([
-  failsWhenInputIsUndefined,
-  failsWhenInvalidInput,
-], "normalize_diacritics", "error");
+prepareTest(
+  [failsWhenInputIsUndefined, failsWhenInvalidInput],
+  "normalize_diacritics",
+  "error"
+);

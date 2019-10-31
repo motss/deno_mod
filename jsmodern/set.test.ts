@@ -1,6 +1,6 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
 import {
   difference,
@@ -16,8 +16,8 @@ import {
   of,
   symmetricDifference,
   toArray,
-  union,
-} from './set.ts';
+  union
+} from "./set.ts";
 
 extend({
   set: [
@@ -34,23 +34,23 @@ extend({
     of,
     symmetricDifference,
     toArray,
-    union,
-  ],
+    union
+  ]
 });
 
 async function willExtendSetPrototype() {
   const extensions = [
-    ['Set.prototype.difference', 'difference'],
-    ['Set.prototype.intersection', 'intersection'],
-    ['Set.prototype.isDisjoint', 'isDisjoint'],
-    ['Set.prototype.isEmpty', 'isEmpty'],
-    ['Set.prototype.isSubset', 'isSubset'],
-    ['Set.prototype.isSuperset', 'isSuperset'],
-    ['Set.prototype.iter', 'iter'],
-    ['Set.prototype.len', 'len'],
-    ['Set.prototype.symmetricDifference', 'symmetricDifference'],
-    ['Set.prototype.toArray', 'toArray'],
-    ['Set.prototype.union', 'union'],
+    ["Set.prototype.difference", "difference"],
+    ["Set.prototype.intersection", "intersection"],
+    ["Set.prototype.isDisjoint", "isDisjoint"],
+    ["Set.prototype.isEmpty", "isEmpty"],
+    ["Set.prototype.isSubset", "isSubset"],
+    ["Set.prototype.isSuperset", "isSuperset"],
+    ["Set.prototype.iter", "iter"],
+    ["Set.prototype.len", "len"],
+    ["Set.prototype.symmetricDifference", "symmetricDifference"],
+    ["Set.prototype.toArray", "toArray"],
+    ["Set.prototype.union", "union"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Set.prototype;
@@ -61,9 +61,9 @@ async function willExtendSetPrototype() {
 
 async function willExtendSetConstructor() {
   const extensions = [
-    ['Set.from', 'from'],
-    ['Set.isSet', 'isSet'],
-    ['Set.of', 'of'],
+    ["Set.from", "from"],
+    ["Set.isSet", "isSet"],
+    ["Set.of", "of"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Set;
@@ -72,7 +72,8 @@ async function willExtendSetConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendSetConstructor,
-  willExtendSetPrototype,
-], 'jsmodern', 'set');
+prepareTest(
+  [willExtendSetConstructor, willExtendSetPrototype],
+  "jsmodern",
+  "set"
+);

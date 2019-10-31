@@ -1,6 +1,6 @@
 import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { helloWorld, peopleList } from './CONSTANTS.ts';
+import { helloWorld, peopleList } from "./CONSTANTS.ts";
 import { htmlFragment as html } from "./mod.ts";
 
 async function willRender() {
@@ -70,11 +70,15 @@ async function willRenderExternalStyle() {
   );
 }
 
-prepareTest([
-  willRender,
-  willRenderAListOfSyncTasks,
-  willRenderExternalStyle,
-  willRenderWithAsyncTasks,
-  willRenderWithSyncAndAsyncTasks,
-  willRenderWithSyncTasks
-], "lit_ntml", "htmlFragment");
+prepareTest(
+  [
+    willRender,
+    willRenderAListOfSyncTasks,
+    willRenderExternalStyle,
+    willRenderWithAsyncTasks,
+    willRenderWithSyncAndAsyncTasks,
+    willRenderWithSyncTasks
+  ],
+  "lit_ntml",
+  "htmlFragment"
+);

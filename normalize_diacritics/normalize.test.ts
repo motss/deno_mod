@@ -1,8 +1,4 @@
-import {
-  assertStrictEq,
-  assertEquals,
-  prepareTest,
-} from "../test.mod.ts";
+import { assertStrictEq, assertEquals, prepareTest } from "../test.mod.ts";
 
 import { normalize } from "./mod.ts";
 
@@ -63,12 +59,15 @@ async function willNormalizeRepeatedCharacters() {
   assertStrictEq(await normalize("åéåéåéåé"), "aeaeaeae");
 }
 
-prepareTest([
-  willSkipNormalizationForEmptyCharacter,
-  willNormalizeSingleCharacter,
-  willNormalizeAccentedCharacters,
-  willNormalizeAccentedCharactersWithoutUsingNativeFunction,
-  willReturnOriginalCharacterWhenNoMatchFound,
-  willNormalizeNonAccentedCharacter,
-  willNormalizeRepeatedCharacters,
-], "normalize_diacritics");
+prepareTest(
+  [
+    willSkipNormalizationForEmptyCharacter,
+    willNormalizeSingleCharacter,
+    willNormalizeAccentedCharacters,
+    willNormalizeAccentedCharactersWithoutUsingNativeFunction,
+    willReturnOriginalCharacterWhenNoMatchFound,
+    willNormalizeNonAccentedCharacter,
+    willNormalizeRepeatedCharacters
+  ],
+  "normalize_diacritics"
+);

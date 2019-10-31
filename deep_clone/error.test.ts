@@ -1,7 +1,4 @@
-import {
-  assertThrowsAsync,
-  prepareTest,
-} from "../test.mod.ts";
+import { assertThrowsAsync, prepareTest } from "../test.mod.ts";
 
 import { deepClone } from "./mod.ts";
 
@@ -27,7 +24,8 @@ async function failsWhenDeeplyCloneUndefined() {
   );
 }
 
-prepareTest([
-  failsWhenDeeplyCloneNull,
-  failsWhenDeeplyCloneUndefined,
-], "deep_clone", "error");
+prepareTest(
+  [failsWhenDeeplyCloneNull, failsWhenDeeplyCloneUndefined],
+  "deep_clone",
+  "error"
+);

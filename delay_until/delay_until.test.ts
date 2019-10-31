@@ -1,6 +1,6 @@
 import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { delayUntil } from './mod.ts';
+import { delayUntil } from "./mod.ts";
 
 async function willDelay() {
   const r = await delayUntil(3e3);
@@ -20,8 +20,7 @@ async function willResolveWithDelayFallbacksTo0() {
   assertStrictEq(r, void 0);
 }
 
-prepareTest([
-  willDelay,
-  willResolveWithDelayFallbacksTo0,
-  willResolveWithOptionalDelay,
-], "delay_until");
+prepareTest(
+  [willDelay, willResolveWithDelayFallbacksTo0, willResolveWithOptionalDelay],
+  "delay_until"
+);

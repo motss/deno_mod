@@ -28,7 +28,8 @@ async function failsWhenHtmlFragmentThrowsError() {
   );
 }
 
-prepareTest([
-  failsWhenHtmlFragmentThrowsError,
-  failsWhenHtmlThrowsError,
-], "lit_ntml", "error");
+prepareTest(
+  [failsWhenHtmlFragmentThrowsError, failsWhenHtmlThrowsError],
+  "lit_ntml",
+  "error"
+);

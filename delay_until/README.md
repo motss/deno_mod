@@ -26,7 +26,7 @@ import { delayUntil } from "https://denopkg.com/motss/deno_mod@v0.6.1/delay_unti
 (async () => {
   await delayUntil(3e3);
 
-  console.log('This message prints out after 3 seconds');
+  console.log("This message prints out after 3 seconds");
 })();
 ```
 
@@ -43,7 +43,7 @@ import { delayUntil } from "https://denopkg.com/motss/deno_mod@v0.6.1/delay_unti
 
 <!-- References -->
 
-[setTimeout]: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
+[settimeout]: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 [async...await]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
 
 <!-- MDN -->

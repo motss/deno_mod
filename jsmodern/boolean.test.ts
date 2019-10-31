@@ -1,21 +1,15 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
-import {
-  isBoolean,
-} from './boolean.ts';
+import { isBoolean } from "./boolean.ts";
 
 extend({
-  boolean: [
-    isBoolean,
-  ],
+  boolean: [isBoolean]
 });
 
 async function willExtendBooleanConstructor() {
-  const extensions = [
-    ['Boolean.isBoolean', 'isBoolean'],
-  ];
+  const extensions = [["Boolean.isBoolean", "isBoolean"]];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Boolean;
   });
@@ -23,6 +17,4 @@ async function willExtendBooleanConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendBooleanConstructor,
-], 'jsmodern', 'boolean');
+prepareTest([willExtendBooleanConstructor], "jsmodern", "boolean");

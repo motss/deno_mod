@@ -12,66 +12,65 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Usage](#Usage)
-- [API Reference](#API-Reference)
-  - [OnfinishFulfilled&lt;T&gt;](#OnfinishFulfilledltTgt)
-  - [OnfinishRejected](#OnfinishRejected)
-  - [PollingMeasure](#PollingMeasure)
-    - [Methods](#Methods)
-      - [PollingMeasure.toJSON()](#PollingMeasuretoJSON)
-  - [PollingObserver&lt;T&gt;](#PollingObserverltTgt)
-    - [Methods](#Methods-1)
-      - [PollingObserver.observe(callback[, options])](#PollingObserverobservecallback-options)
-      - [PollingObserver.disconnect()](#PollingObserverdisconnect)
-      - [PollingObserver.takeRecords()](#PollingObservertakeRecords)
-    - [Event handler](#Event-handler)
-      - [PollingObserver.onfinish](#PollingObserveronfinish)
-    - [Events](#Events)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+  - [OnfinishFulfilled&lt;T&gt;](#onfinishfulfilledlttgt)
+  - [OnfinishRejected](#onfinishrejected)
+  - [PollingMeasure](#pollingmeasure)
+    - [Methods](#methods)
+      - [PollingMeasure.toJSON()](#pollingmeasuretojson)
+  - [PollingObserver&lt;T&gt;](#pollingobserverlttgt)
+    - [Methods](#methods-1)
+      - [PollingObserver.observe(callback[, options])](#pollingobserverobservecallback-options)
+      - [PollingObserver.disconnect()](#pollingobserverdisconnect)
+      - [PollingObserver.takeRecords()](#pollingobservertakerecords)
+    - [Event handler](#event-handler)
+      - [PollingObserver.onfinish](#pollingobserveronfinish)
+    - [Events](#events)
       - [finish](#finish)
-- [License](#License)
+- [License](#license)
 
 ## Usage
 
 ```ts
 interface DataType {
-  status: 'complete' | 'in-progress';
+  status: "complete" | "in-progress";
   items: Record<string, any>[];
 }
 
-import { PollingObserver } from 'https://denopkg.com/motss/deno_mod@v0.6.1/polling_observer/mod.ts';
+import { PollingObserver } from "https://denopkg.com/motss/deno_mod@v0.6.1/polling_observer/mod.ts";
 
-const obs = new PollingObserver((data/** list, observer */) => {
+const obs = new PollingObserver((data /** list, observer */) => {
   const { status, items } = data || {};
   const itemsLen = (items && items.length) || 0;
 
   /** Stop polling when any of the conditions fulfills */
-  return 'complete' === status || itemsLen > 99;
+  return "complete" === status || itemsLen > 99;
 });
 
 /**
  * When polling finishes, it will either fulfill or reject depending on the status:
- * 
+ *
  * | Status  | Returns   |
  * | ------- | --------- |
  * | finish  | <value>   |
  * | timeout | <value>   |
  * | error   | <reason>  |
- * 
- * Alternatively, `obs.addEventListener('finish', ...);` works too.
+ *
  */
-obs.onfinish = (data, records/**, observer */) => {
+obs.onfinish = (data, records /**, observer */) => {
   const { status, value, reason } = data || {};
 
   switch (status) {
-    case 'error': {
+    case "error": {
       console.error(`Polling fails due to: `, reason);
       break;
     }
-    case 'timeout': {
+    case "timeout": {
       console.log(`Polling timeouts after 30 seconds: `, value);
       break;
     }
-    case 'finish':
+    case "finish":
     default: {
       console.log(`Polling finishes: `, value);
     }
@@ -96,7 +95,7 @@ obs.onfinish = (data, records/**, observer */) => {
 obs.observe(
   async () => {
     /** Polling callback - fetch resources */
-    const r = await fetch('https://example.com/api?key=123');
+    const r = await fetch("https://example.com/api?key=123");
     const d = await r.json();
 
     return d;
@@ -104,7 +103,7 @@ obs.observe(
   /** Run polling (at least) every 2 seconds and timeout if it exceeds 30 seconds */
   {
     interval: 2e3,
-    timeout: 30e3,
+    timeout: 30e3
   }
 );
 ```
@@ -115,7 +114,7 @@ obs.observe(
 
 ```ts
 interface OnfinishFulfilled<T> {
-  status: 'finish' | 'timeout';
+  status: "finish" | "timeout";
   value: T;
 }
 ```
@@ -124,7 +123,7 @@ interface OnfinishFulfilled<T> {
 
 ```ts
 interface OnfinishRejected {
-  status: 'error';
+  status: "error";
   reason: Error;
 }
 ```
@@ -134,7 +133,7 @@ interface OnfinishRejected {
 ```ts
 interface PollingMeasure {
   duration: number;
-  entryType: 'polling-measure';
+  entryType: "polling-measure";
   name: string;
   startTime: number;
 }
@@ -195,6 +194,7 @@ _Alternatively, an event handler can be setup to listen for the `finish` event. 
 Event handler for when a polling finishes. When a polling finishes, it can either be fulfilled with a `value` or rejected with a `reason`. Any one of which contains a `status` field to tell the state of the finished polling.
 
 - `onfinishCallback` <[Function][function-mdn-url]> Callback to be executed when a polling finishes.
+
   - `data` <[OnfinishFulfilled&lt;T&gt;]|[OnfinishRejected]> When a polling fulfills, it returns an [OnfinishFulfilled&lt;T&gt;] object with `status` set to `finish` or `timeout` and a `value` in the type of `T`. Whereas a polling rejects, it returns an [OnfinishRejected] object with `status` set to `error` and a `reason` in the type of [Error][error-mdn-url].
 
     | Status    | Returns        |
@@ -215,19 +215,6 @@ Event handler for when a polling finishes. When a polling finishes, it can eithe
 ```ts
 const obs = new PollingObserver(/** --snip */);
 // --snip
-
-/** Same as using obs.onfinish = ... */
-obs.addEventListener('finish', (ev: CustomEvent) => {
-  const {
-    detail: [
-      { status, value/**, reason */ },
-      records,
-      observer,
-    ],
-  } = ev;
-
-  // --snip
-});
 ```
 
 ## License
@@ -235,19 +222,20 @@ obs.addEventListener('finish', (ev: CustomEvent) => {
 [MIT License](http://motss.mit-license.org/) © Rong Sen Ng
 
 <!-- References -->
-[deno]: https://github.com/denoland/deno
 
-[PollingObserver]: #pollingobservert
-[PollingObserver.observe()]: #pollingobserverobservecallback-options
-[PollingObserver.disconnect()]: #pollingobserverdisconnect
-[PollingObserver.takeRecords()]: #pollingobservertakerecords
-[PollingMeasure]: #pollingmeasure
-[PollingMeasure.toJSON()]: #pollingmeasuretojson
-[OnfinishFulfilled&lt;T&gt;]: #onfinishfulfilledt
-[OnfinishRejected]: #onfinishrejected
+[deno]: https://github.com/denoland/deno
+[pollingobserver]: #pollingobservert
+[pollingobserver.observe()]: #pollingobserverobservecallback-options
+[pollingobserver.disconnect()]: #pollingobserverdisconnect
+[pollingobserver.takerecords()]: #pollingobservertakerecords
+[pollingmeasure]: #pollingmeasure
+[pollingmeasure.tojson()]: #pollingmeasuretojson
+[onfinishfulfilled&lt;t&gt;]: #onfinishfulfilledt
+[onfinishrejected]: #onfinishrejected
 [finish]: #finish
 
 <!-- MDN -->
+
 [array-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 [boolean-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 [function-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
@@ -262,7 +250,9 @@ obs.addEventListener('finish', (ev: CustomEvent) => {
 [error-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 
 <!-- Badges -->
+
 [mit-license-badge]: https://flat.badgen.net/badge/license/MIT/blue
 
 <!-- Links -->
+
 [mit-license-url]: https://github.com/motss/deno_mod/blob/master/LICENSE

@@ -30,6 +30,7 @@
 - [normalize_diacritics] - Remove accents/ diacritics in string
 - [polling_observer] - A new way of running polling function with observer pattern
 - [delay_until] - A typical delay function but Promise based
+- [jsmodern] - An extension to existing JavaScript, influenced by other great languages such as Rust, Dart, Java, Golang, etc.
 
 ## License
 
@@ -40,11 +41,13 @@
 [deno]: https://github.com/denoland/deno
 
 <!-- Modules -->
+
 [deep_clone]: /deep_clone
 [lit_ntml]: /lit_ntml
 [normalize_diacritics]: /normalize_diacritics
 [polling_observer]: /polling_observer
 [delay_until]: /delay_until
+[jsmodern]: /jsmodern
 
 <!-- Badges -->
 

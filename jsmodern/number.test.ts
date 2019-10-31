@@ -1,6 +1,6 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
 import {
   divFloor,
@@ -14,8 +14,8 @@ import {
   isOdd,
   lcm,
   modFloor,
-  range,
-} from './number.ts';
+  range
+} from "./number.ts";
 
 extend({
   number: [
@@ -30,22 +30,22 @@ extend({
     isOdd,
     lcm,
     modFloor,
-    range,
-  ],
+    range
+  ]
 });
 
 async function willExtendNumberPrototype() {
   const extensions = [
-    ['Number.prototype.divFloor', 'divFloor'],
-    ['Number.prototype.divModFloor', 'divModFloor'],
-    ['Number.prototype.divRem', 'divRem'],
-    ['Number.prototype.gcd', 'gcd'],
-    ['Number.prototype.isBetween', 'isBetween'],
-    ['Number.prototype.isEven', 'isEven'],
-    ['Number.prototype.isMultipleOf', 'isMultipleOf'],
-    ['Number.prototype.isOdd', 'isOdd'],
-    ['Number.prototype.lcm', 'lcm'],
-    ['Number.prototype.modFloor', 'modFloor'],
+    ["Number.prototype.divFloor", "divFloor"],
+    ["Number.prototype.divModFloor", "divModFloor"],
+    ["Number.prototype.divRem", "divRem"],
+    ["Number.prototype.gcd", "gcd"],
+    ["Number.prototype.isBetween", "isBetween"],
+    ["Number.prototype.isEven", "isEven"],
+    ["Number.prototype.isMultipleOf", "isMultipleOf"],
+    ["Number.prototype.isOdd", "isOdd"],
+    ["Number.prototype.lcm", "lcm"],
+    ["Number.prototype.modFloor", "modFloor"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Number.prototype;
@@ -56,8 +56,8 @@ async function willExtendNumberPrototype() {
 
 async function willExtendNumberConstructor() {
   const extensions = [
-    ['Number.isNumber', 'isNumber'],
-    ['Number.range', 'range'],
+    ["Number.isNumber", "isNumber"],
+    ["Number.range", "range"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Number;
@@ -66,7 +66,8 @@ async function willExtendNumberConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendNumberConstructor,
-  willExtendNumberPrototype,
-], 'jsmodern', 'number');
+prepareTest(
+  [willExtendNumberConstructor, willExtendNumberPrototype],
+  "jsmodern",
+  "number"
+);

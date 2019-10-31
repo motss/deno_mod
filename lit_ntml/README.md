@@ -13,8 +13,8 @@
 ## Table of contents <!-- omit in toc -->
 
 - [Usage](#Usage)
-    - [html()](#html)
-    - [htmlFragment()](#htmlFragment)
+  - [html()](#html)
+  - [htmlFragment()](#htmlFragment)
 - [API Reference](#API-Reference)
   - [html()](#html-1)
   - [htmlFragment()](#htmlFragment-1)

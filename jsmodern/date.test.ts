@@ -1,28 +1,18 @@
-import { assertStrictEq, prepareTest } from '../test.mod.ts';
+import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
-import { extend } from './extend.ts';
+import { extend } from "./extend.ts";
 
-import {
-  difference,
-  isAfter,
-  isBefore,
-  isDate,
-} from './date.ts';
+import { difference, isAfter, isBefore, isDate } from "./date.ts";
 
 extend({
-  date: [
-    difference,
-    isAfter,
-    isBefore,
-    isDate
-  ],
+  date: [difference, isAfter, isBefore, isDate]
 });
 
 async function willExtendDatePrototype() {
   const extensions = [
-    ['Date.prototype.difference', 'difference'],
-    ['Date.prototype.isAfter', 'isAfter'],
-    ['Date.prototype.isBefore', 'isBefore'],
+    ["Date.prototype.difference", "difference"],
+    ["Date.prototype.isAfter", "isAfter"],
+    ["Date.prototype.isBefore", "isBefore"]
   ];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Date.prototype;
@@ -32,9 +22,7 @@ async function willExtendDatePrototype() {
 }
 
 async function willExtendDateConstructor() {
-  const extensions = [
-    ['Date.isDate', 'isDate'],
-  ];
+  const extensions = [["Date.isDate", "isDate"]];
   const expectation = extensions.every(([_, methodName]) => {
     return methodName in Date;
   });
@@ -42,7 +30,8 @@ async function willExtendDateConstructor() {
   assertStrictEq(expectation, true);
 }
 
-prepareTest([
-  willExtendDateConstructor,
-  willExtendDatePrototype,
-], 'jsmodern', 'date');
+prepareTest(
+  [willExtendDateConstructor, willExtendDatePrototype],
+  "jsmodern",
+  "date"
+);
