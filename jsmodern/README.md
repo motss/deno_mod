@@ -20,8 +20,8 @@
 
 ```ts
 // It is recommended to only import those extensions you need instead of everything.
-import { extend } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@0.6.1/jsmodern/extend.ts";
-import { sum } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@0.6.1/jsmodern/array.ts";
+import { extend } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.7.0/jsmodern/extend.ts";
+import { sum } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.7.0/jsmodern/array.ts";
 
 extend({ array: [sum] });
 
