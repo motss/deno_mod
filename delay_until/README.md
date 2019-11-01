@@ -12,16 +12,16 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Usage](#Usage)
-- [API Reference](#API-Reference)
-  - [delayUntil([delay])](#delayUntildelay)
-- [License](#License)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+  - [delayUntil([delay])](#delayuntildelay)
+- [License](#license)
 
 ## Usage
 
 ```ts
 /** Import from GH via `denopkg` */
-import { delayUntil } from "https://denopkg.com/motss/deno_mod@v0.7.1/delay_until/mod.ts";
+import { delayUntil } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.8.0/delay_until/mod.ts";
 
 (async () => {
   await delayUntil(3e3);
