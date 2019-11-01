@@ -12,11 +12,11 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Usage](#Usage)
-- [API Reference](#API-Reference)
-  - [deepClone&lt;T&gt;(target[, options])](#deepCloneltTgttarget-options)
-  - [deepCloneSync(target[, options])](#deepCloneSynctarget-options)
-- [License](#License)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+  - [deepClone&lt;T&gt;(target[, options])](#deepclonelttgttarget-options)
+  - [deepCloneSync(target[, options])](#deepclonesynctarget-options)
+- [License](#license)
 
 ## Usage
 
@@ -54,7 +54,7 @@ import { deepClone } from "https://denopkg.com/motss/deno_mod@v0.7.1/deep_clone/
   - `absolute` <[boolean][boolean-mdn-url]> If true, deep clone complex objects.
 - returns: <[Promise][promise-mdn-url]<`T`>> Promise which resolves with the deeply cloned target.
 
-This method deeply clones a given target with `JSON.parse` + `JSON.stringify` asynchronously by default. Set `absolute: true` for deep cloning complex objects that contain [Date][date-mdn-url], [RegExp][regexp-mdn-url], [Function][function-mdn-url], etc.
+This method deeply clones a given target with `JSON.parse` + `JSON.stringify` asynchronously by default. Set `absolute: true` for deep cloning complex objects that contain [Date][date-mdn-url], [RegExp][reg-exp-mdn-url], [Function][function-mdn-url], etc.
 
 ### deepCloneSync(target[, options])
 
@@ -78,7 +78,7 @@ This methods works the same as `deepClone(target[, options])` except that this i
 [number-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 [object-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
 [promise-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-[regexp-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+[reg-exp-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 [string-mdn-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 <!-- Badges -->

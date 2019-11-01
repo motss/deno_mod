@@ -2,7 +2,7 @@ import { assertStrictEq, prepareTest } from "../test.mod.ts";
 
 import { extend } from "./extend.ts";
 
-import { isRegExp } from "./regexp.ts";
+import { isRegExp } from "./reg-exp.ts";
 
 extend({
   regExp: [isRegExp]

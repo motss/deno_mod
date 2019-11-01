@@ -65,7 +65,7 @@ console.log(total === 6); // true
 [number extensions]: https://github.com/motss/jsmodern/tree/master/src/number
 [object extensions]: https://github.com/motss/jsmodern/tree/master/src/object
 [promise extensions]: https://github.com/motss/jsmodern/tree/master/src/promise
-[regexp extensions]: https://github.com/motss/jsmodern/tree/master/src/regexp
+[reg-exp extensions]: https://github.com/motss/jsmodern/tree/master/src/reg-exp
 [set extensions]: https://github.com/motss/jsmodern/tree/master/src/set
 [string extensions]: https://github.com/motss/jsmodern/tree/master/src/string
 [symbol extensions]: https://github.com/motss/jsmodern/tree/master/src/symbol

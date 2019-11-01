@@ -8,7 +8,7 @@ import "./map.test.ts";
 import "./number.test.ts";
 import "./object.test.ts";
 import "./promise.test.ts";
-import "./regexp.test.ts";
+import "./reg-exp.test.ts";
 import "./set.test.ts";
 import "./string.test.ts";
 import "./symbol.test.ts";
