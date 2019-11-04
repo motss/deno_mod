@@ -17,6 +17,7 @@
 
 - [Pre-requisite](#pre-requisite)
 - [Available modules](#available-modules)
+- [Node.js equivalent](#nodejs-equivalent)
 - [License](#license)
 
 ## Pre-requisite
@@ -32,6 +33,10 @@
 - [delay_until] - A typical delay function but Promise based
 - [jsmodern] - An extension to existing JavaScript, influenced by other great languages such as Rust, Dart, Java, Golang, etc.
 
+## Node.js equivalent
+
+Check out [nodemod] for equivalent modules for Node.js.
+
 ## License
 
 [MIT License](http://motss.mit-license.org/) © Rong Sen Ng
@@ -39,6 +44,7 @@
 <!-- References -->
 
 [deno]: https://github.com/denoland/deno
+[nodemod]: https://github.com/motss/nodemod
 
 <!-- Modules -->
 
