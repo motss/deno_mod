@@ -1,5 +1,2 @@
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/iterator/is-async-iterator.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/iterator/is-async-iterator.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/iterator/is-iterator.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/iterator/is-iterator.js";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/iterator/is-async-iterator.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/iterator/is-iterator.ts";

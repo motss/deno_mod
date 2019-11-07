@@ -1,98 +1,33 @@
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/all.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/all.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/any.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/any.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/binary-search.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/binary-search.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/chunks.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/chunks.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/clear.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/clear.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/contains.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/contains.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/ends-with.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/ends-with.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/enumerate.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/enumerate.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/filled.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/filled.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/first-item.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/first-item.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/fold.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/fold.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/insert.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/insert.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/is-empty.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/is-empty.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/is-sorted.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/is-sorted.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/iter.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/iter.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/last-index.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/last-index.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/last-item.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/last-item.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/len.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/len.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/max.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/max.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/min.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/min.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/partition.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/partition.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/product.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/product.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/reject.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/reject.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/remove.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/remove.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/repeat.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/repeat.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/retain.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/retain.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/select.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/select.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/shuffle.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/shuffle.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/split.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/split.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/split-at.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/split-at.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/starts-with.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/starts-with.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/sum.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/sum.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/truncate.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/array/truncate.js";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/all.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/any.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/binary-search.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/chunks.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/clear.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/contains.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/ends-with.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/enumerate.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/filled.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/first-item.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/fold.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/insert.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/is-empty.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/is-sorted.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/iter.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/last-index.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/last-item.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/len.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/max.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/min.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/partition.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/product.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/reject.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/remove.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/repeat.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/retain.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/select.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/shuffle.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/split.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/split-at.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/starts-with.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/sum.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/array/truncate.ts";

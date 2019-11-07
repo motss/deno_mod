@@ -1,2 +1,1 @@
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/reg-exp/is-reg-exp.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/reg-exp/is-reg-exp.js";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/reg-exp/is-reg-exp.ts";

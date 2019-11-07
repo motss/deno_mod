@@ -1,8 +1,3 @@
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/weak-set/from.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/weak-set/from.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/weak-set/is-weak-set.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/weak-set/is-weak-set.js";
-
-// @deno-types="https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/weak-set/of.d.ts"
-export * from "https://cdn.jsdelivr.net/npm/jsmodern@0.6.0/dist/weak-set/of.js";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/weak-set/from.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/weak-set/is-weak-set.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/jsmodern@deno.0/src/weak-set/of.ts";
