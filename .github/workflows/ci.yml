@@ -39,7 +39,7 @@ jobs:
 
       - name: Setup deno@${{ matrix.target }}
         if: "env.CI_SKIP == 'false'"
-        uses: denolib/setup-deno@v1
+        uses: denolib/setup-deno@master
         with:
           deno-version: ${{ matrix.target }}
 
