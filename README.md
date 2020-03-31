@@ -9,8 +9,6 @@
 [![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
-[![CircleCI][circleci-badge]][circleci-url]
-
 > A collection of [deno] modules written in TypeScript.
 
 ## Table of contents <!-- omit in toc -->
@@ -22,7 +20,7 @@
 
 ## Pre-requisite
 
-- [deno] >= 0.22.0
+- [deno] >= 0.37.1
 
 ## Available modules
 
@@ -59,10 +57,8 @@ Check out [nodemod] for equivalent modules for Node.js.
 
 [version-badge]: https://flat.badgen.net/github/release/motss/deno_mod?icon=github
 [mit-license-badge]: https://flat.badgen.net/github/license/motss/deno_mod
-[circleci-badge]: https://flat.badgen.net/circleci/github/motss/deno_mod/master?icon=circleci
 
 <!-- Links -->
 
 [version-url]: https://github.com/motss/deno_mod/releases
 [mit-license-url]: /LICENSE
-[circleci-url]: https://circleci.com/gh/motss/deno_mod/tree/master

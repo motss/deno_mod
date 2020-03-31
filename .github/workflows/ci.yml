@@ -1,0 +1,69 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+
+env:
+  CI_SKIP: false
+
+jobs:
+  test:
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, 'doc:')"
+    name: ${{ matrix.os }} ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-18.04, windows-2019]
+        target: [0.37]
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Git log
+        shell: bash
+        run: |
+          if [ -n "$(git log --format=%B -n 1 | grep -iE '^[0-9]+[.]{1,}[0-9]+[.]{1,}[0-9]+')" ]; then
+            echo '::set-env name=CI_SKIP::true'
+          fi
+
+      - name: Setup deno@${{ matrix.target }}
+        if: "env.CI_SKIP == 'false'"
+        uses: denolib/setup-deno@v1
+        with:
+          deno-version: ${{ matrix.target }}
+
+      - name: List versions
+        if: "env.CI_SKIP == 'false'"
+        continue-on-error: true
+        shell: bash
+        run: |
+          deno --version && which deno && pwd && npx envinfo
+
+      - name: Test
+        if: "env.CI_SKIP == 'false'"
+        run: |
+          deno run ./test.ts --reload
+
+      - name: Benchmark
+        if: "env.CI_SKIP == 'false' && success()"
+        run: |
+          deno run ./bench.ts --reload
+
+      # - name: Upload coverage to codecov
+      #   uses: codecov/codecov-action@v1
+      #   if: success()
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     file: ./coverage/lcov.info
+      #     flags: unit_tests

@@ -1,11 +1,11 @@
 import { assertStrictEq, assertThrowsAsync, prepareTest } from "../test.mod.ts";
 
 import { MockData } from "./CONSTANTS.ts";
-import { PollingObserver, OnfinishRejected } from "./mod.ts";
+import { PollingObserver, OnfinishRejected, OnfinishValue } from "./mod.ts";
 
 async function failsWhenConditionCallbackIsUndefined() {
   await assertThrowsAsync(
-    async () => (new PollingObserver(undefined) as unknown) as void,
+    async () => (new PollingObserver(undefined!) as unknown) as void,
     TypeError,
     `'conditionCallback' is not defined`
   );
@@ -14,7 +14,7 @@ async function failsWhenConditionCallbackIsUndefined() {
 async function failsWhenErrorOccurs() {
   const obs = new PollingObserver<MockData>(() => false);
   const task = new Promise<OnfinishRejected>(yay => {
-    obs.onfinish = (d: OnfinishRejected) => yay(d);
+    obs.onfinish = (d: OnfinishValue<unknown>) => yay(d as OnfinishRejected);
   });
 
   obs.observe(
