@@ -9,6 +9,8 @@
 [![Version][version-badge]][version-url]
 [![MIT License][mit-license-badge]][mit-license-url]
 
+[![ci][ga-badge]][ga-url]
+
 > A collection of [deno] modules written in TypeScript.
 
 ## Table of contents <!-- omit in toc -->
@@ -58,7 +60,11 @@ Check out [nodemod] for equivalent modules for Node.js.
 [version-badge]: https://flat.badgen.net/github/release/motss/deno_mod?icon=github
 [mit-license-badge]: https://flat.badgen.net/github/license/motss/deno_mod
 
+[ga-badge]: https://github.com/motss/deno_mod/workflows/ci/badge.svg?branch=master
+
 <!-- Links -->
 
 [version-url]: https://github.com/motss/deno_mod/releases
 [mit-license-url]: /LICENSE
+
+[ga-url]: https://github.com/motss/deno_mod/actions?query=workflow%3Aci
