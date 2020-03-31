@@ -12,17 +12,17 @@
 
 ## Table of contents <!-- omit in toc -->
 
-- [Usage](#Usage)
-- [API Reference](#API-Reference)
+- [Usage](#usage)
+- [API Reference](#api-reference)
   - [normalize([input])](#normalizeinput)
-  - [normalizeSync([input])](#normalizeSyncinput)
-- [License](#License)
+  - [normalizeSync([input])](#normalizesyncinput)
+- [License](#license)
 
 ## Usage
 
 ```ts
 /** Import from GH via `denopkg` */
-import { normalize } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.8.1/normalize_diacritics/mod.ts";
+import { normalize } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.9.0/normalize_diacritics/mod.ts";
 
 (async () => {
   const str = "söme stüff with áccènts";

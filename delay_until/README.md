@@ -21,7 +21,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { delayUntil } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.8.1/delay_until/mod.ts";
+import { delayUntil } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.9.0/delay_until/mod.ts";
 
 (async () => {
   await delayUntil(3e3);

@@ -14,7 +14,7 @@
 
 - [Usage](#usage)
 - [API Reference](#api-reference)
-  - [deepClone&lt;T&gt;(target[, options])](#deepclonelttgttarget-options)
+  - [deepClone&lt;T&gt;(target[, options])](#deepclonettarget-options)
   - [deepCloneSync(target[, options])](#deepclonesynctarget-options)
 - [License](#license)
 
@@ -22,7 +22,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { deepClone } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.8.1/deep_clone/mod.ts";
+import { deepClone } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.9.0/deep_clone/mod.ts";
 
 (async () => {
   const simpleObject = {

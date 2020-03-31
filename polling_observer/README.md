@@ -14,12 +14,12 @@
 
 - [Usage](#usage)
 - [API Reference](#api-reference)
-  - [OnfinishFulfilled&lt;T&gt;](#onfinishfulfilledlttgt)
+  - [OnfinishFulfilled&lt;T&gt;](#onfinishfulfilledt)
   - [OnfinishRejected](#onfinishrejected)
   - [PollingMeasure](#pollingmeasure)
     - [Methods](#methods)
       - [PollingMeasure.toJSON()](#pollingmeasuretojson)
-  - [PollingObserver&lt;T&gt;](#pollingobserverlttgt)
+  - [PollingObserver&lt;T&gt;](#pollingobservert)
     - [Methods](#methods-1)
       - [PollingObserver.observe(callback[, options])](#pollingobserverobservecallback-options)
       - [PollingObserver.disconnect()](#pollingobserverdisconnect)
@@ -38,7 +38,7 @@ interface DataType {
   items: Record<string, any>[];
 }
 
-import { PollingObserver } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.8.1/polling_observer/mod.ts";
+import { PollingObserver } from "https://cdn.jsdelivr.net/motss/deno_mod@v0.9.0/polling_observer/mod.ts";
 
 const obs = new PollingObserver((data /** list, observer */) => {
   const { status, items } = data || {};
