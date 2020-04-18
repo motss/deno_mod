@@ -22,7 +22,7 @@
 
 ```ts
 /** Import from GH via `denopkg` */
-import { normalize } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.9.0/normalize_diacritics/mod.ts";
+import { normalize } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.10.0/normalize_diacritics/mod.ts";
 
 (async () => {
   const str = "söme stüff with áccènts";

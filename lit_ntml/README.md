@@ -13,19 +13,23 @@
 ## Table of contents <!-- omit in toc -->
 
 - [Usage](#usage)
-    - [html()](#html)
-    - [htmlFragment()](#htmlfragment)
+  - [html()](#html)
+  - [htmlSync()](#htmlsync)
+  - [htmlFragment()](#htmlfragment)
+  - [htmlFragmentSync()](#htmlfragmentsync)
 - [API Reference](#api-reference)
   - [html()](#html-1)
+  - [htmlSync()](#htmlsync-1)
   - [htmlFragment()](#htmlfragment-1)
+  - [htmlFragmentSync()](#htmlfragmentsync-1)
 - [License](#license)
 
 ## Usage
 
-#### html()
+### html()
 
 ```ts
-import { html } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.9.0/lit_ntml/mod.ts";
+import { html } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.10.0/lit_ntml/mod.ts";
 
 const peopleList = ["Cash Black", "Vict Fisherman"];
 const syncTask = () => `<h1>Hello, World!</h1>`;
@@ -37,10 +41,22 @@ const asyncListTask = async () =>
 await html`${syncTask}${asyncLiteral}${asyncListTask}`; /** <!DOCTYPE html><html><head></head><body><h1>Hello, World!</h1><h2>John Doe</h2><ul><li>Cash Black</li><li>Vict Fisherman</li></ul></body></html> */
 ```
 
-#### htmlFragment()
+### htmlSync()
 
 ```ts
-import { htmlFragment as html } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.9.0/lit_ntml/mod.ts";
+import { htmlSync as html } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.10.0/lit_ntml/mod.ts";
+
+const peopleList = ['Cash Black', 'Vict Fisherman'];
+const syncTask = () => `<h1>Hello, World!</h1>`;
+
+html`${syncTask}${peopleList}`;
+/** <!DOCTYPE html><html><head></head><body><h1>Hello, World!</h1>Cash BlackVictFisherman</body></html> */
+```
+
+### htmlFragment()
+
+```ts
+import { htmlFragment as html } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.10.0/lit_ntml/mod.ts";
 
 const syncTask = () => `<h1>Hello, World!</h1>`;
 const externalStyleLiteral = `<style>body { margin: 0; padding: 0; box-sizing: border-box; }</style>`;
@@ -49,15 +65,36 @@ const externalStyleLiteral = `<style>body { margin: 0; padding: 0; box-sizing: b
 await html`${externalStyleLiteral}${syncTask}`; /** <style>body { margin: 0; padding: 0; box-sizing: border-box; }</style><h1>Hello, World!</h1> */
 ```
 
+### htmlFragmentSync()
+
+```ts
+import { htmlFragmentSync as html } from "https://cdn.jsdelivr.net/gh/motss/deno_mod@v0.10.0/lit_ntml/mod.ts";
+
+const peopleList = ['Cash Black', 'Vict Fisherman'];
+const syncTask = () => `<h1>Hello, World!</h1>`;
+const asyncTask = Promise.resolve(1);
+
+html`${syncTask}${peopleList}${asyncTask}`;
+/** <h1>Hello, World!</h1>Cash BlackVictFisherman[object Promise] */
+```
+
 ## API Reference
 
 ### html()
 
 - returns: <[Promise][promise-mdn-url]&lt;[string][string-mdn-url]&gt;> Promise which resolves with rendered HTML document string.
 
+### htmlSync()
+
+This method works the same as `html()` except that this is the synchronous version.
+
 ### htmlFragment()
 
 - returns: <[Promise][promise-mdn-url]&lt;[string][string-mdn-url]&gt;> Promise which resolves with rendered HTML document fragment string.
+
+### htmlFragmentSync()
+
+This method works the same as `htmlFragment()` except that this is the synchronous version.
 
 ## License
 
