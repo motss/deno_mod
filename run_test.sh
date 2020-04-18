@@ -1,1 +1,1 @@
-deno run ./test.ts --reload
+deno test --reload

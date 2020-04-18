@@ -22,16 +22,16 @@
 
 ## Pre-requisite
 
-- [deno] >= 0.37.1
+- [deno] >= 0.41.0
 
 ## Available modules
 
 - [deep_clone] - Simple and fast deep cloning
+- [delay_until] - A typical delay function but Promise based
+- [jsmodern] - An extension to existing JavaScript, influenced by other great languages such as Rust, Dart, Java, Golang, etc.
 - [lit_ntml] - Expressive HTML Templates
 - [normalize_diacritics] - Remove accents/ diacritics in string
 - [polling_observer] - A new way of running polling function with observer pattern
-- [delay_until] - A typical delay function but Promise based
-- [jsmodern] - An extension to existing JavaScript, influenced by other great languages such as Rust, Dart, Java, Golang, etc.
 
 ## Node.js equivalent
 

@@ -1,1 +1,1 @@
-export * from "https://cdn.jsdelivr.net/gh/motss/normalize-diacritics@latest/src/normalize-diacritics.ts";
+export * from "https://cdn.jsdelivr.net/gh/motss/normalize-diacritics@2.11.1/src/normalize-diacritics.ts";
